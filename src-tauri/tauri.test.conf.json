@@ -1,0 +1,18 @@
+{
+  "productName": "T-Minus Test",
+  "identifier": "com.furyspace21.tminustest",
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "T-Minus Test",
+        "width": 820,
+        "height": 860,
+        "minWidth": 560,
+        "minHeight": 620,
+        "resizable": true,
+        "center": true
+      }
+    ]
+  }
+}

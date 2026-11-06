@@ -1,0 +1,3685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light" />
+<title>自定义倒计时</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAGNUlEQVR42p2XbYxcVRnHf885Z153Z2e3rQXsdrc0W0ma0IqJfqGWYGnsC5FULakJHyCBqCRg0qrxm5A01heMCbENMSYmGiRaY40UaRCq1H5o9IuKtMESyrahUOju7HZfZmfmnvP44c7LvTOztHiTyTl3zr3P2/95+V8BYO9ey9GjfsuW3SOVuYVHffBf1qC3KZoHBFUAlHiNl/Yd1zlXVJfEmDeMyO/yLnPktddOV2CvhaNeWso3bvrs54LyjCobQgiohliSNuUlhHdEJ0808UjvuYggIgDnM8587b9n/34S9loBuP2Ou7fWG41XQlAXgvciGBRJK054/H8ZpqqqQYyxIhJlnN12/tw/TsntW3aP1CqVf6oyFoKPQNxHUdpWe6PRUI1EjEP0YrlY+qRdWV79TVXZE3zkEXEpTxKCjDGItEIJQjOkiX37HAiqyxllVL0XY0ci35hzkQ/7QlDVdrL1Wq+qzM7MEUNI+7/EXVNXvKoqpcEiIpJ4rvUMABK8VwJfcSGECVUVVKU3k5v3qhx6cj9rR2+h0Wi0kil1qSqqSiab4dKlyxz8wWGCKtKOfqJSFAOKV5lwoLk44/uXlxhhsbrEurE1bN+xC6Jr4FzHwo5TEEXghnjpxeNUq0sUiwVCCKkcIRFVEZOT9bd9WkMIsaV9kklEqNcbFAt5/nTs54yPj1KrVjHGJowQQvDkCgXenrzEji88xOJilWzWEYJ2hb9jgDEG0wStHUIlXtGAqhJ8IJfNMF2Z4cB3vgeAy2QwRrDWYq3FGMFlMgDs//ZBpisz5HIZvA9tuZDQkfiZpGJ6jIj3URRRHirxl1Nn+P6PjlAoDeF9aAff+0ChNMShHx7m5KtnGC6XiKKoCaemjCBlUEDWbfiUhhBStZpIllTYRIS5+QV+/YufsGPXNhZmZgEYGC5z4oWX2ffgNygNDsS4962SLgjEIOMTdyRyIK1UuxLTiFCr11kxUubPx3/F6o+tBOD9D6a4Z9cDTFcqZLNZYof6K01WjTGSzgG0K2Sa3nvvyeeyvHP5PR4/8ATZYp5sMc9j+7/LO5ffJZfL4b1fFvcUBM1VxtZv7kDQtjTRCLo8UQXnLNPTFb7+6CMAHDn8M0ZGhvE+6vN+sqWn54YRwTV9bjYM/RDMOvvgI0xugOq/j8W9NT+AhiiNe1Jp91xoNS4B14YglQPa1xNN9Ih2pbTDutzwWp5DqJIow+5+0IVZix/EHUzw1WsUNu2hsGkPUfUaiEnICB9a2sk8cPHDIW6ly+Ce9MRZy/TMLNu3beWpQ98C4Py5s7z0yt8YGSkTNSLSQ7sLgsReFWTN2EYN6rvaQFf42nPBUKvVWLlimJMnfsNNq1cBcOX9q9z9+fuZmqqQzWXiMuzhA/3njOnuVKnOmLqPX6rX6zz91BOsXTdGvVanXquzdt0YT//4SWr1WjPEpLupKkpIQNDZmzZefXHvGOGs4erUNPsfe5id9+5kvlLBOYtzlvlKhV337uTA44/wwdQ01pnelt7VY1p7uWX0E+qT07APBNZaZmZm2XrnZ3j+2C/xUSMOYZMXxHRGsC7D7vse4NTpM5TLQ0TNvpCqrATWIoLcPLohMQv64C5CvV6nWCxw8sRvufXWMZaqVawxKTbgfSBfLHDhwiR3bf8SC4tVstkM2sMHOklujCA3rZlIdMLeWhYRFherHH32GXbuvg+iuQQh6WJGUQSuxIvH/8AX9z3cJiT9hluLDzjVUEM1169sQAlByeWyvHVhkuf/+Hsa9QZ9GFkbikwmw+TFS+TyWbz3iHRRsvRAqsnqj6//Twi6sXliumk0TYY7NzffIl49MGlXaFUDpcHBtqHp0RyLBMQYc9YZa5/TEB0MGkJafCcSAgyXS9dhxGkvfQ8nSAdLxBhj5TkZH988vLA0+y9VHVMNEeD6NZDuDOYGZscyVwTixHBxeDC3WQBuHp24K2o0Xg4hOFX1gIEWTb+O0p4MX/bSOPRijZHIZXL3XH3v7VctYOevTV8oDa86rRruBFaBiqouk7035GW/S0SMMUbetC57/9SVyb8CtsWt7cJc5a2VI2ue9URzoCuAIRGcNL+/Op9lH/mnQNUa87px7qcD+fJXr7z75jnAAv5/s9MMcX9QXT4AAAAASUVORK5CYII=" />
+<style>
+  :root{
+    color-scheme:light;
+    --z:1;
+    --ink:#0f0f0f;
+    --hair:#ededed;
+    --track:#efefef;
+    --bg:#ffffff;
+    --line:#ededed;
+    --surface:#ffffff;
+    --edge:#0f0f0f;
+    --input-bg:#ffffff;
+    --input-line:#cfcfcf;
+    --input-text:#0f0f0f;
+    --overlay-bg:#fafafa;
+    --overlay-ink:#111111;
+    --ph-bg:#f7f7f7;
+    --ph-line:#e6e6e6;
+    --btn-bg:#111111;
+    --btn-ink:#ffffff;
+    --ghost-line:#cfcfcf;
+  }
+  /* 底色层：只改表面与底色，切换时做 2 秒渐变 */
+  .bg-dark{
+    color-scheme:dark;
+    --bg:#0a0a0a;
+    --surface:#111111;
+    --hair:#242424;
+    --line:#242424;
+    --track:#2a2a2a;
+    --input-bg:#0d0d0d;
+    --input-line:#3a3a3a;
+    --ph-bg:#161616;
+    --ph-line:#2a2a2a;
+    --overlay-bg:#0a0a0a;
+    --ghost-line:#3a3a3a;
+  }
+  /* 前景层：文字与描边，在渐变中点一次性切换 */
+  .ink-dark{
+    --ink:#f2f2f2;
+    --input-text:#f2f2f2;
+    --overlay-ink:#f2f2f2;
+    --edge:#f2f2f2;
+    --btn-bg:#f2f2f2;
+    --btn-ink:#0a0a0a;
+  }
+  /* 切换主题：内容瞬间隐身 → 底色单独渐变 2 秒 → 新配色的内容瞬间出现 */
+  .switching .wrap{opacity:0}
+  .switching body{transition:background-color 2s ease}
+  *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none !important}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    min-height:calc(100vh / var(--z));
+    background:var(--bg);
+    color:var(--ink);
+    transition:background-color .25s ease;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:grid;
+    place-items:center;
+    padding:56px 24px;
+  }
+  body{place-items:safe center}
+  /* 隐藏原生滚动条：横向由自绘导航条接管，纵向用滚轮 / 拖动平移 */
+  html{scrollbar-width:none}
+  ::-webkit-scrollbar{width:0;height:0;display:none}
+  .wrap{width:100%;max-width:580px;position:relative}
+
+  .topline{display:block}
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:.2em;
+    color:var(--ink);
+    padding-right:124px;
+  }
+  .linkbtn{
+    font:inherit;
+    font-size:11.5px;
+    letter-spacing:.1em;
+    color:var(--ink);
+    background:none;
+    border:0;
+    border-bottom:1px solid transparent;
+    padding:3px 0;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .linkbtn:hover{border-bottom-color:var(--ink)}
+  .topright{position:absolute;top:0;right:0;display:flex;flex-direction:column;align-items:flex-end;gap:7px;flex:none;transition:opacity .18s ease}
+  .toplinks{display:flex;align-items:baseline;gap:16px}
+
+  .langbtn{
+    background:none;
+    border:0;
+    padding:0;
+    line-height:0;
+    color:var(--ink);
+    opacity:.5;
+    cursor:pointer;
+  }
+  .langbtn:hover{opacity:1}
+  .langbtn svg{fill:none;stroke:currentColor;stroke-width:1.5}
+  .langmenu{
+    position:absolute;
+    right:0;
+    top:100%;
+    margin-top:8px;
+    z-index:70;
+    min-width:190px;
+    max-height:304px;
+    overflow:auto;
+    padding:6px;
+    background:var(--surface);
+    border:1.5px solid var(--edge);
+    border-radius:10px;
+  }
+  .lang-item{
+    display:block;
+    width:100%;
+    text-align:left;
+    font:inherit;
+    font-size:12px;
+    padding:7px 10px;
+    border:0;
+    border-radius:6px;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .lang-item:hover{background:var(--ph-bg)}
+  .lang-item.is-on{font-weight:600}
+  .lang-item.is-on::after{content:'●';float:right;font-size:8px;margin-left:14px;opacity:.6}
+
+  h1{
+    font-size:21px;
+    font-weight:600;
+    letter-spacing:.02em;
+    margin-top:12px;
+    line-height:1.4;
+    padding-right:124px;
+  }
+  .clock-row{
+    margin-top:16px;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:13px;
+    color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+  .pulse{
+    width:6px;height:6px;border-radius:50%;background:var(--ink);
+    animation:pulse 2s ease-in-out infinite;
+    flex:none;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.22}}
+  .zone{font-size:12px;color:var(--ink);font-variant-numeric:normal}
+
+  .countdown{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-end;
+    gap:16px 24px;
+    margin-top:30px;
+  }
+  .unit{display:flex;align-items:baseline;gap:5px}
+  .num{
+    font-size:clamp(34px,9.2vw,52px);
+    font-weight:600;
+    line-height:1;
+    letter-spacing:-.03em;
+    font-variant-numeric:tabular-nums;
+  }
+  .unit .lbl{font-size:12px;color:var(--ink)}
+
+  /* 预备期：右侧小倒计时（距离起点） */
+  .prebox{
+    margin-left:auto;
+    align-self:flex-end;
+    padding-bottom:6px;
+    text-align:right;
+    line-height:1.3;
+  }
+  .pre-cap{
+    font-size:10px;letter-spacing:.14em;color:var(--ink);opacity:.55;
+    margin-bottom:6px;
+  }
+  .pre-nums{
+    font-size:13px;font-weight:500;color:var(--ink);
+    font-variant-numeric:tabular-nums;letter-spacing:.02em;
+    white-space:nowrap;
+  }
+  .pre-nums span{font-size:10px;font-weight:400;opacity:.6;margin:0 6px 0 2px}
+  .pre-nums span:last-child{margin-right:0}
+
+  .hint{
+    margin-top:12px;
+    font-size:12px;
+    color:var(--ink);
+    font-variant-numeric:tabular-nums;
+  }
+
+  .panel{
+    margin-top:38px;
+    display:flex;
+    align-items:center;
+    gap:36px;
+  }
+
+  .placeholder{
+    margin-top:34px;
+    height:200px;
+    border-radius:10px;
+    background-color:var(--ph-bg);
+    background-image:repeating-linear-gradient(135deg,var(--ph-line) 0,var(--ph-line) 1px,transparent 1px,transparent 10px);
+  }
+
+  .ring{
+    position:relative;
+    width:168px;height:168px;
+    flex:none;
+  }
+  .ring svg{width:100%;height:100%;display:block}
+  .ring-base{fill:none;stroke:var(--track);stroke-width:9}
+  .ring-fill{
+    fill:none;
+    stroke:var(--ink);
+    stroke-width:9;
+    stroke-linecap:round;
+    transform:rotate(-90deg);
+    transform-origin:50% 50%;
+  }
+  .ring-center{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    gap:2px;
+  }
+  .ring-pct{
+    font-size:30px;font-weight:600;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;line-height:1;
+  }
+  .ring-pct span{font-size:13px;font-weight:500;color:var(--ink);margin-left:1px}
+  .ring-pct.is-pre{
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.02em;
+    line-height:1.35;
+    white-space:pre-line;
+    text-align:center;
+    max-width:88%;
+  }
+  .ring-cap{font-size:11px;color:var(--ink);letter-spacing:.12em}
+
+  .side{flex:1;min-width:0}
+  .bar-head{
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+    font-size:12px;color:var(--ink);
+    margin-bottom:10px;
+  }
+  .bar-head b{
+    font-weight:600;color:var(--ink);
+    font-variant-numeric:tabular-nums;
+    font-size:13px;
+  }
+  .bar{
+    height:10px;border-radius:99px;
+    background:transparent;
+    border:1.5px solid var(--edge);
+    overflow:hidden;
+  }
+  .bar-fill{
+    height:100%;width:0;
+    background:var(--ink);
+  }
+
+  /* 勾选行：标题 + 可选小字 + 右侧开关 */
+  .togrow{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;margin-top:14px;
+  }
+  .togtext{min-width:0}
+  .togtitle{font-size:11px;color:var(--ink);letter-spacing:.08em;line-height:1.4}
+  .toghint{font-size:10.5px;color:var(--ink);opacity:.6;margin-top:3px;line-height:1.4}
+
+  .switch{
+    flex:none;
+    width:38px;height:20px;padding:0;
+    border-radius:99px;
+    border:1.5px solid var(--edge);
+    background:transparent;
+    position:relative;
+    cursor:pointer;
+  }
+  .switch::after{
+    content:'';
+    position:absolute;top:2px;left:2px;
+    width:12px;height:12px;border-radius:50%;
+    background:var(--ink);
+    transition:left .16s ease,background-color .16s ease;
+  }
+  .switch[aria-checked="true"]{background:var(--ink)}
+  .switch[aria-checked="true"]::after{left:20px;background:var(--surface)}
+
+  .seg-sm .seg-btn{padding:5px 9px;font-size:11px}
+
+  .hidetbl{margin-top:6px}
+  .hidehdr,.hiderow{
+    display:grid;
+    grid-template-columns:1fr 86px 72px;
+    align-items:center;
+    gap:4px;
+  }
+  .hidehdr{font-size:9.5px;letter-spacing:.02em;opacity:.5;margin-bottom:4px}
+  .hidehdr span:not(:first-child){text-align:center;white-space:nowrap}
+  .hiderow{padding:5px 0}
+  .hiderow > span:first-child{font-size:11px;letter-spacing:.08em}
+  .hiderow .na{text-align:center;font-size:11px;opacity:.3}
+  .hiderow .switch{justify-self:center}
+  .is-forced{display:none !important}
+
+  .zoomrow{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+  .zoom-wrap{position:relative;display:inline-flex;align-items:center}
+  .zoom-sel{
+    appearance:none;
+    -webkit-appearance:none;
+    font:inherit;
+    font-size:11px;
+    letter-spacing:.06em;
+    color:var(--ink);
+    background:transparent;
+    border:0;
+    padding:0 12px 0 0;
+    margin:0;
+    width:46px;
+    outline:none;
+    cursor:pointer;
+    flex:none;
+  }
+  .zoom-sel option{
+    background:var(--surface);
+    color:var(--ink);
+  }
+  .zoom-caret{
+    position:absolute;
+    right:1px;
+    width:0;height:0;
+    border-left:3.5px solid transparent;
+    border-right:3.5px solid transparent;
+    border-top:4.5px solid var(--ink);
+    opacity:.7;
+    pointer-events:none;
+  }
+
+  /* 横向 / 竖向导航条：内容比窗口大时出现，2 秒不动淡出 */
+  .hscroll,.vscroll{
+    position:fixed;
+    background:var(--track);
+    opacity:0;
+    transition:opacity .3s ease;
+    pointer-events:none;
+    z-index:120;
+  }
+  .hscroll{left:14px;right:14px;bottom:10px;height:5px;border-radius:99px}
+  .vscroll{top:14px;bottom:14px;right:10px;width:5px;border-radius:99px}
+  .hscroll.is-on,.vscroll.is-on{opacity:1}
+  .hscroll-thumb,.vscroll-thumb{
+    border-radius:99px;
+    background:var(--ink);
+  }
+  .hscroll-thumb{height:100%;width:30%}
+  .vscroll-thumb{width:100%;height:30%}
+  body.can-pan{cursor:grab}
+  body.panning,body.panning *{cursor:grabbing !important}
+  .is-clipped{opacity:0;pointer-events:none;transition:opacity .2s ease}
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(6px)}
+    to{opacity:1;transform:none}
+  }
+  .reveal{animation:riseIn .32s cubic-bezier(.2,.7,.3,1) both}
+
+  .meta{
+    margin-top:26px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 18px;
+  }
+  .meta dt{font-size:11px;color:var(--ink);margin-bottom:4px;letter-spacing:.04em}
+  .meta dd{font-size:13px;font-weight:500;font-variant-numeric:tabular-nums}
+
+  .settings{
+    margin-top:34px;
+    padding:46px 22px 24px;
+    border:2px solid var(--edge);
+    border-radius:12px;
+    background:var(--surface);
+    width:720px;
+    max-width:calc((100vw / var(--z)) - 32px);
+    margin-left:50%;
+    transform:translateX(-50%);
+    overflow:hidden;
+  }
+  .settings-grid{display:flex;gap:20px;align-items:flex-start}
+  .settings-main{flex:1;min-width:0}
+
+  .tasklist{
+    width:168px;
+    flex:none;
+    padding-right:16px;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+  }
+  .tasklist-head{
+    font-size:10px;
+    letter-spacing:.14em;
+    color:var(--ink);
+    opacity:.5;
+    margin-bottom:8px;
+  }
+  .tasklist-items{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    max-height:330px;
+    overflow:auto;
+  }
+  .task-item{
+    text-align:left;
+    font:inherit;
+    font-size:12px;
+    padding:6px 8px;
+    border:0;
+    border-radius:6px;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .task-item:hover{background:var(--ph-bg)}
+  .task-item.is-on{background:var(--ink);color:var(--surface)}
+  .tasklist-foot{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+  .taskbtn{
+    font:inherit;
+    font-size:11px;
+    padding:6px 8px;
+    border:1.5px solid var(--input-line);
+    border-radius:8px;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    text-align:left;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .taskbtn:hover{border-color:var(--ink)}
+
+  .ctxmenu{
+    position:fixed;
+    z-index:200;
+    min-width:130px;
+    padding:4px;
+    background:var(--surface);
+    border:1.5px solid var(--edge);
+    border-radius:8px;
+  }
+  .ctxmenu button{
+    display:block;
+    width:100%;
+    text-align:left;
+    font:inherit;
+    font-size:12px;
+    padding:6px 10px;
+    border:0;
+    border-radius:5px;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .ctxmenu button:hover{background:var(--ph-bg)}
+  .fields{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .field label{font-size:11px;color:var(--ink);letter-spacing:.08em}
+  .field input,.field select,.field textarea{
+    font:inherit;
+    font-size:13px;
+    color:var(--input-text);
+    background:var(--input-bg);
+    border:1.5px solid var(--input-line);
+    border-radius:8px;
+    padding:9px 10px;
+    width:100%;
+    min-width:0;
+    outline:none;
+  }
+  .field textarea{
+    line-height:1.6;
+    min-height:60px;
+    resize:vertical;
+    font-size:12.5px;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ink)}
+  .sep{height:1px;background:var(--line);margin:20px 0 16px}
+  .fields.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .field--wide{margin-top:14px}
+  .actions{
+    display:flex;
+    gap:8px;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+    margin-top:16px;
+  }
+  .btn{
+    font:inherit;
+    font-size:12px;
+    letter-spacing:.04em;
+    padding:8px 16px;
+    border-radius:999px;
+    cursor:pointer;
+    background:var(--btn-bg);
+    color:var(--btn-ink);
+    border:1.5px solid var(--btn-bg);
+  }
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--ghost-line)}
+  .btn.ghost:hover{border-color:var(--ink)}
+  .note{margin-top:12px;font-size:11px;color:var(--ink)}
+  .author{
+    margin-top:16px;
+    padding-top:12px;
+    border-top:1px solid var(--line);
+    font-size:10.5px;
+    letter-spacing:.08em;
+    color:var(--ink);
+    opacity:.65;
+  }
+
+  .seg{
+    display:flex;
+    gap:2px;
+    padding:2px;
+    border:1.5px solid var(--input-line);
+    border-radius:8px;
+  }
+  .seg-btn{
+    flex:1;
+    font:inherit;
+    font-size:12px;
+    letter-spacing:.04em;
+    padding:8px 10px;
+    border:0;
+    border-radius:6px;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .seg-btn.is-on{background:var(--ink);color:var(--btn-ink)}
+
+  .auto-entry{
+    width:100%;
+    height:34px;
+    margin-top:2px;
+    font:inherit;
+    font-size:11.5px;
+    letter-spacing:.04em;
+    color:var(--ink);
+    background:transparent;
+    border:1.5px solid var(--ink);
+    border-radius:8px;
+    cursor:pointer;
+  }
+  .auto-entry:hover{background:var(--ink);color:var(--surface)}
+
+  .set-close{
+    position:absolute;
+    top:12px;right:14px;
+    width:27px;height:27px;
+    display:grid;place-items:center;
+    padding:0;
+    border:1.5px solid var(--edge);
+    border-radius:50%;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .set-close:hover{background:var(--ink);color:var(--surface)}
+
+  .sect{
+    margin-bottom:10px;
+    border:2px solid transparent;
+    border-radius:10px;
+    padding:8px 12px;
+  }
+  .sect:not(.is-closed){border-color:var(--edge)}
+  .sect-head{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:2px 0;border:0;margin:0;
+  }
+  .sect:not(.is-closed) .sect-head{margin-bottom:10px}
+  .sect-title{
+    font:inherit;font-size:11.5px;letter-spacing:.14em;color:var(--ink);
+    background:none;border:0;padding:0;cursor:pointer;text-align:left;
+  }
+  .sect-title::after{content:"\25BE";margin-left:8px;font-size:12px;line-height:1;opacity:.7;vertical-align:1px}
+  .sect.is-closed .sect-title::after{content:"\25B8"}
+  .sect-reset{
+    font:inherit;font-size:10px;letter-spacing:.06em;color:var(--ink);
+    background:none;border:0;padding:0;cursor:pointer;opacity:.45;
+  }
+  .sect-reset:hover{opacity:1}
+  .sect.is-closed .sect-body{display:none}
+
+  .settings-grid.narrow{flex-direction:column}
+  .settings-grid.narrow .tasklist{
+    width:100%;border-right:0;border-bottom:1px solid var(--line);
+    padding:0 0 14px;margin-bottom:16px;
+  }
+  .settings-grid.narrow .tasklist-items{max-height:132px}
+
+  .task-row{position:relative;display:flex;align-items:center;gap:4px}
+  .task-row .task-item{flex:1;min-width:0}
+  .task-more{
+    flex:none;width:20px;height:20px;line-height:1;
+    font:inherit;font-size:13px;
+    color:var(--ink);background:none;border:0;
+    border-radius:5px;cursor:pointer;opacity:0;
+    transition:opacity .12s ease;
+  }
+  .task-row:hover .task-more,.task-more:focus{opacity:.65}
+  .task-more:hover{opacity:1;background:var(--ph-bg)}
+
+  .auto-editor{display:flex;flex-direction:column;gap:10px;margin-top:2px}
+
+  .tl{
+    position:relative;
+    height:44px;
+    background:#f3f3f3;
+    border:1px solid #dcdcdc;
+    border-radius:8px;
+    overflow:hidden;
+    -webkit-user-select:none;
+    user-select:none;
+    cursor:default;
+  }
+  .tl-blocks{position:absolute;inset:0}
+  .tl-tick{position:absolute;top:0;width:1px;height:10px;background:#d8d8d8}
+  .tl-tick.major{height:18px;background:#bdbdbd}
+  .tl-block{
+    position:absolute;
+    top:7px;bottom:7px;
+    min-width:9px;
+    background:#111;
+    border-radius:4px;
+    box-shadow:0 0 0 1.5px #f3f3f3;
+    cursor:grab;
+    z-index:2;
+  }
+  .tl-block:active{cursor:grabbing}
+  .tl-handle{position:absolute;top:0;bottom:0;width:5px;cursor:ew-resize}
+  .tl-handle.l{left:0}
+  .tl-handle.r{right:0}
+  .tl-now{
+    position:absolute;top:0;bottom:0;width:1.5px;
+    background:#ff3b30;
+    z-index:3;
+    pointer-events:none;
+  }
+
+  .tl-scale{position:relative;height:15px;font-size:9.5px;color:var(--ink)}
+  .tl-scale span{position:absolute;top:0;transform:translateX(-50%);line-height:1}
+  .tl-scale span.big{font-size:11px;font-weight:600}
+
+  .tl-label{
+    position:absolute;
+    left:5px;right:5px;
+    top:50%;
+    transform:translateY(-50%);
+    text-align:center;
+    font-size:9.5px;
+    line-height:1;
+    color:#ffffff;
+    letter-spacing:.02em;
+    font-variant-numeric:tabular-nums;
+    white-space:nowrap;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .tl-label.two{font-size:8.5px;line-height:1.35;white-space:normal}
+  .tl-empty{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10.5px;
+    color:#9a9a9a;
+    pointer-events:none;
+  }
+
+  .tl-legend{position:relative;display:block}
+  .tl-chip{
+    position:absolute;
+    font-size:10px;
+    line-height:1.4;
+    font-variant-numeric:tabular-nums;
+    letter-spacing:.02em;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--input-line);
+    border-radius:4px;
+    padding:1px 6px;
+    white-space:nowrap;
+  }
+  .tl-links{position:absolute;left:0;pointer-events:none}
+  .tl-links polyline{stroke:var(--ink);stroke-width:1;opacity:.45}
+
+  .tl-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .tl-spacer{flex:1}
+  .mini{
+    font:inherit;
+    font-size:11px;
+    letter-spacing:.04em;
+    padding:6px 12px;
+    border-radius:999px;
+    border:1.5px solid var(--input-line);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .mini:hover{border-color:var(--ink)}
+  .mini.solid{background:var(--ink);color:var(--btn-ink);border-color:var(--ink)}
+  .tl-hint{font-size:11px;line-height:1.9;color:var(--ink)}
+  .tl-hint .kbd{
+    display:inline-block;
+    border:1.5px solid var(--input-line);
+    border-radius:4px;
+    padding:0 5px;
+    margin-right:4px;
+    font-size:10px;
+    line-height:1.6;
+  }
+  .tl-hint b{font-weight:600}
+  .tl-hint-2{display:block;font-size:10.5px;opacity:.55}
+
+  .overlay{
+    position:fixed;
+    inset:0;
+    z-index:60;
+    background:var(--overlay-bg);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    opacity:0;
+    transition:opacity .2s ease;
+  }
+  .overlay.is-on{opacity:1}
+  .spinner{
+    width:18px;height:18px;
+    border-radius:50%;
+    border:1.5px solid var(--input-line);
+    border-top-color:var(--ink);
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .overlay-text{font-size:13px;letter-spacing:.14em;color:var(--overlay-ink)}
+
+  footer{
+    margin-top:44px;
+    padding-top:18px;
+    border-top:1px solid var(--hair);
+    font-size:11px;
+    line-height:1.8;
+    color:var(--ink);
+    white-space:pre-line;
+  }
+
+  /* ---------- 归零警告弹窗 ---------- */
+  .modal-mask{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(6,8,10,.62);
+    -webkit-backdrop-filter:blur(3px);
+    backdrop-filter:blur(3px);
+    animation:maskIn .16s ease-out;
+  }
+  @keyframes maskIn{from{opacity:0}to{opacity:1}}
+  .modal{
+    position:relative;
+    width:100%;
+    max-width:404px;
+    background:#0e1013;
+    border:1px solid #262b32;
+    color:#e8eaed;
+    padding:26px 26px 0;
+    animation:modalIn .22s ease-out;
+  }
+  @keyframes modalIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
+  .corner{position:absolute;width:9px;height:9px;border:1px solid #5c6570;pointer-events:none}
+  .corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+  .corner.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}
+  .corner.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+
+  .modal-x{
+    position:absolute;
+    top:8px;right:8px;
+    width:30px;height:30px;
+    display:grid;place-items:center;
+    background:none;border:0;
+    color:#6f7883;
+    cursor:pointer;
+  }
+  .modal-x:hover{color:#fff}
+
+  .modal-tag{
+    display:flex;align-items:center;gap:8px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:10px;
+    letter-spacing:.22em;
+    color:#7d858f;
+  }
+  .modal-tag i{
+    width:5px;height:5px;
+    background:#ff3b30;
+    box-shadow:0 0 9px rgba(255,59,48,.75);
+    display:block;
+  }
+  .modal-title{
+    margin-top:16px;
+    font-size:21px;
+    font-weight:600;
+    letter-spacing:.02em;
+    color:#f4f5f7;
+  }
+  .modal-sub{
+    margin-top:9px;
+    font-size:12.5px;
+    line-height:1.75;
+    color:#98a0aa;
+  }
+  .modal-rows{
+    margin-top:20px;
+    padding-top:14px;
+    border-top:1px solid #23282e;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 16px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:11px;
+  }
+  .modal-rows span{display:block;font-size:10px;letter-spacing:.08em;color:#6f7883;margin-bottom:5px}
+  .modal-rows b{font-weight:500;color:#e3e6ea;font-variant-numeric:tabular-nums}
+  .modal-rows b.alert{color:#ff4b3e}
+  .modal-strip{
+    height:6px;
+    margin:22px -26px 0;
+    background:repeating-linear-gradient(45deg,#f2c14e 0,#f2c14e 8px,#15171b 8px,#15171b 16px);
+  }
+  .modal-actions{
+    display:flex;
+    gap:10px;
+    justify-content:flex-end;
+    margin-top:22px;
+  }
+  .modal-field{display:block;margin-top:20px}
+  .modal-field span{
+    display:block;
+    margin-bottom:6px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:10px;
+    letter-spacing:.08em;
+    color:#6f7883;
+  }
+  .modal-field input{
+    width:100%;
+    font:inherit;
+    font-size:13px;
+    padding:9px 10px;
+    border-radius:6px;
+    outline:none;
+    background:#f2f2f2;
+    color:#0a0a0a;
+    border:1.5px solid #f2f2f2;
+  }
+  .modal-field input:focus{border-color:#8b929c}
+  .mbtn{
+    font:inherit;
+    font-size:12px;
+    letter-spacing:.06em;
+    padding:8px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    background:#f2f2f2;
+    color:#0a0a0a;
+    border:1.5px solid #f2f2f2;
+  }
+  .mbtn.ghost{background:transparent;color:#c3c9d1;border-color:#39404a}
+  .mbtn.ghost:hover{color:#ffffff;border-color:#8b929c}
+
+  @media (max-width:540px){
+    body{padding:40px 20px}
+    .settings{padding:18px 16px}
+    .panel{flex-direction:column;align-items:stretch;gap:30px}
+    .ring{align-self:center;width:150px;height:150px}
+    .ring-pct{font-size:26px}
+    .ring-pct.is-pre{font-size:13px}
+    .meta{margin-top:22px}
+    .fields{grid-template-columns:1fr}
+    .fields.two{grid-template-columns:1fr}
+    .actions{justify-content:flex-start}
+    .placeholder{height:150px}
+    .modal{padding:22px 22px 0}
+    .modal-strip{margin:20px -22px 0}
+  }
+</style>
+<script>
+(function () {
+  try {
+    var raw = localStorage.getItem('custom-countdown-quant-v1');
+    if (!raw) return;
+    var o = JSON.parse(raw);
+    if (!o) return;
+    var dark = o.theme === 'dark';
+    if (o.themeMode === 'auto' && o.schedule && o.schedule.length) {
+      var d = new Date();
+      var m = d.getHours() * 60 + d.getMinutes();
+      dark = false;
+      for (var i = 0; i < o.schedule.length; i++) {
+        if (m >= o.schedule[i].s && m < o.schedule[i].e) { dark = true; break; }
+      }
+    }
+    if (dark) {
+      document.documentElement.classList.add('bg-dark');
+      document.documentElement.classList.add('ink-dark');
+    }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<main class="wrap">
+  <div class="topline">
+    <div class="eyebrow" id="eyebrow">请设置上小标题</div>
+    <div class="topright">
+      <div class="toplinks">
+        <button class="linkbtn" id="exportBtn" type="button">导出</button>
+        <button class="linkbtn" id="importBtn" type="button">导入</button>
+      </div>
+      <div class="toplinks">
+        <button class="linkbtn" id="gearBtn" type="button">设置</button>
+        <button class="linkbtn" id="resetBtn" type="button">重置</button>
+      </div>
+      <div class="zoomrow">
+        <span class="zoom-wrap">
+          <select id="scaleSel" class="zoom-sel"></select>
+          <span class="zoom-caret" aria-hidden="true"></span>
+        </span>
+        <button class="langbtn" id="langBtn" type="button" aria-label="Language">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="langmenu" id="langMenu" hidden></div>
+    </div>
+  </div>
+  <h1 id="title">请设置大标题</h1>
+  <div class="clock-row">
+    <span class="pulse"></span>
+    <span id="clock">----</span>
+    <span class="zone" id="zone"></span>
+  </div>
+
+  <section class="settings" id="settings" hidden>
+    <button class="set-close" id="settingsClose" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
+      </svg>
+    </button>
+    <div class="settings-grid">
+      <aside class="tasklist" id="tasklist" hidden>
+        <div class="tasklist-head" id="tasklistHead">任务</div>
+        <div class="tasklist-items" id="taskItems"></div>
+        <div class="tasklist-foot">
+          <button class="taskbtn" id="newTaskBtn" type="button">＋ 新建任务</button>
+          <button class="taskbtn" id="openDirBtn" type="button">打开配置文件夹</button>
+        </div>
+      </aside>
+      <div class="settings-main">
+        <div class="sect is-closed">
+          <div class="sect-head">
+            <button class="sect-title" type="button" data-sect="time" aria-expanded="false" id="sectTimeTitle">时间</button>
+            <button class="sect-reset" type="button" data-reset="time" id="sectTimeReset">重置</button>
+          </div>
+          <div class="sect-body" id="sectTimeBody">
+    <div class="fields">
+      <div class="field">
+        <label for="startIn">开始时间</label>
+        <input id="startIn" type="datetime-local" step="60" />
+      </div>
+      <div class="field">
+        <label for="endIn">截止时间</label>
+        <input id="endIn" type="datetime-local" step="60" />
+      </div>
+      <div class="field">
+        <label for="tzIn">时区</label>
+        <select id="tzIn"></select>
+      </div>
+    </div>
+          </div>
+        </div>
+        <div class="sect is-closed">
+          <div class="sect-head">
+            <button class="sect-title" type="button" data-sect="text" aria-expanded="false" id="sectTextTitle">文案</button>
+            <button class="sect-reset" type="button" data-reset="text" id="sectTextReset">重置</button>
+          </div>
+          <div class="sect-body" id="sectTextBody">
+    <div class="fields two">
+      <div class="field">
+        <label for="eyebrowIn">小标题</label>
+        <input id="eyebrowIn" type="text" maxlength="60" autocomplete="off" spellcheck="false" />
+      </div>
+      <div class="field">
+        <label for="titleIn">大标题</label>
+        <input id="titleIn" type="text" maxlength="60" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+    <div class="field field--wide">
+      <label for="footerIn">下方提示（可换行）</label>
+      <textarea id="footerIn" rows="2" spellcheck="false"></textarea>
+    </div>
+          </div>
+        </div>
+        <div class="sect is-closed">
+          <div class="sect-head">
+            <button class="sect-title" type="button" data-sect="look" aria-expanded="false" id="sectLookTitle">外观</button>
+            <button class="sect-reset" type="button" data-reset="look" id="sectLookReset">重置</button>
+          </div>
+          <div class="sect-body" id="sectLookBody">
+    <div class="field">
+      <div class="seg" id="themeSeg">
+        <button class="seg-btn" type="button" data-theme="light">浅色模式</button>
+        <button class="seg-btn" type="button" data-theme="dark">深色模式</button>
+        <button class="seg-btn" type="button" data-theme="auto">自动模式</button>
+      </div>
+      <button class="auto-entry" id="autoEntry" type="button">编辑时段</button>
+      <div class="auto-editor" id="autoEditor" hidden>
+        <div class="tl" id="tl">
+          <div class="tl-now" id="tlNow"></div>
+          <div class="tl-blocks" id="tlBlocks"></div>
+        </div>
+        <div class="tl-scale" id="tlScale"></div>
+        <div class="tl-legend" id="tlLegend" hidden></div>
+        <div class="tl-actions">
+          <button class="mini" id="addBlock" type="button">＋ 添加时段</button>
+          <button class="mini" id="presetNight" type="button">夜间 22–07</button>
+          <span class="tl-spacer"></span>
+          <button class="mini" id="autoCancel" type="button">关闭</button>
+          <button class="mini solid" id="autoSave" type="button">保存</button>
+        </div>
+        <div class="tl-hint">
+          <span class="kbd">右键</span><b>点黑块即可删除</b>
+          <span class="tl-hint-2">拖两端改边界 · 拖中间平移 · 时段可紧贴 · 删光后保存回到手动</span>
+        </div>
+      </div>
+    </div>
+    <div class="sep"></div>
+    <div class="togrow">
+      <div class="togtext"><div class="togtitle" id="alertLabel">背景随时间变红</div></div>
+      <button class="switch" id="alertSwitch" type="button" role="switch" aria-checked="false" aria-labelledby="alertLabel"></button>
+    </div>
+    <div class="togrow">
+      <div class="togtext">
+        <div class="togtitle" id="fsLabel">全屏模式</div>
+        <div class="toghint" id="fsHint">按 F11 切换</div>
+      </div>
+      <button class="switch" id="fsSwitch" type="button" role="switch" aria-checked="false" aria-labelledby="fsLabel"></button>
+    </div>
+    <div class="sep"></div>
+    <div class="hidetbl">
+      <div class="hidehdr">
+        <span></span>
+        <span id="hideColAuto">靠近边缘隐藏</span>
+        <span id="hideColAlways">直接隐藏</span>
+      </div>
+      <div class="hiderow">
+        <span id="hideTopLbl">右上角按钮</span>
+        <button class="switch" id="hideTopSwitch" type="button" role="switch" aria-checked="true" aria-labelledby="hideTopLbl"></button>
+        <span class="na">—</span>
+      </div>
+      <div class="hiderow">
+        <span id="hideEyebrowLbl">小标题</span>
+        <button class="switch" id="hideEyebrowSwitch" type="button" role="switch" aria-checked="false" aria-labelledby="hideEyebrowLbl"></button>
+        <button class="switch" id="forceEyebrowSwitch" type="button" role="switch" aria-checked="false" aria-labelledby="hideEyebrowLbl"></button>
+      </div>
+      <div class="hiderow">
+        <span id="hideFooterLbl">下方提示</span>
+        <button class="switch" id="hideFooterSwitch" type="button" role="switch" aria-checked="true" aria-labelledby="hideFooterLbl"></button>
+        <button class="switch" id="forceFooterSwitch" type="button" role="switch" aria-checked="false" aria-labelledby="hideFooterLbl"></button>
+      </div>
+    </div>
+          </div>
+        </div>
+    <div class="note">时间按所选时区解读，开始与截止需同时填写；文案留空即隐藏。右上角「重置」可清空全部设置。</div>
+    <div class="author" id="author">作者 · FurySpace21</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="placeholder" id="placeholder" aria-hidden="true"></section>
+
+  <section class="countdown" id="countdown" aria-live="off" hidden>
+    <div class="unit"><span class="num" id="d">00</span><span class="lbl">天</span></div>
+    <div class="unit"><span class="num" id="h">00</span><span class="lbl">时</span></div>
+    <div class="unit"><span class="num" id="mi">00</span><span class="lbl">分</span></div>
+    <div class="unit"><span class="num" id="s">00</span><span class="lbl">秒</span></div>
+    <div class="prebox" id="preBox" hidden>
+      <div class="pre-cap" id="preCap">距离起点</div>
+      <div class="pre-nums" id="preNums"></div>
+    </div>
+  </section>
+  <div class="hint" id="hint" hidden></div>
+
+  <section class="panel" id="panel" hidden>
+    <div class="ring">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="ring-base" cx="100" cy="100" r="88"></circle>
+        <circle class="ring-fill" id="ring" cx="100" cy="100" r="88"></circle>
+      </svg>
+      <div class="ring-center">
+        <div class="ring-pct" id="ringPct">100<span>%</span></div>
+        <div class="ring-cap" id="ringCap">剩余</div>
+      </div>
+    </div>
+
+    <div class="side">
+      <div class="bar-head">
+        <span>剩余时间</span>
+        <b id="barPct">100%</b>
+      </div>
+      <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+
+      <dl class="meta">
+        <div><dt>起点</dt><dd id="startTxt">—</dd></div>
+        <div><dt>终点</dt><dd id="endTxt">—</dd></div>
+        <div><dt>全程</dt><dd id="totalTxt">—</dd></div>
+        <div><dt>已过</dt><dd id="passTxt">—</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <footer id="footer">请设置下方提示文字</footer>
+</main>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="spinner"></div>
+  <div class="overlay-text">清理中</div>
+</div>
+
+<div class="modal-mask" id="modalMask" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <button class="modal-x" id="modalClose" type="button" aria-label="关闭">
+      <svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true">
+        <path d="M2 2 L14 14 M14 2 L2 14" stroke="currentColor" stroke-width="1.4" fill="none" />
+      </svg>
+    </button>
+    <div class="modal-tag"><i></i>SYSTEM NOTICE</div>
+    <h2 class="modal-title" id="modalTitle">倒计时归零</h2>
+    <p class="modal-sub">目标时间已到，本次计时结束。</p>
+    <div class="modal-rows">
+      <div><span>目标</span><b id="modalTarget">—</b></div>
+      <div><span>状态</span><b class="alert">已结束</b></div>
+    </div>
+    <div class="modal-strip"></div>
+  </div>
+</div>
+
+<div class="modal-mask" id="confirmMask" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="modal-tag"><i></i>CONFIRM</div>
+    <h2 class="modal-title" id="confirmTitle">重置全部设置？</h2>
+    <p class="modal-sub">日期与文案会被清空，页面颜色将在约 3 秒内缓慢过渡。</p>
+    <div class="modal-actions">
+      <button class="mbtn ghost" id="confirmCancel" type="button">取消</button>
+      <button class="mbtn" id="confirmOk" type="button">重置</button>
+    </div>
+    <div class="modal-strip"></div>
+  </div>
+</div>
+
+<div class="modal-mask" id="exportMask" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="exportTitle">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <div class="modal-tag"><i></i>EXPORT</div>
+    <h2 class="modal-title" id="exportTitle">导出配置</h2>
+    <p class="modal-sub">保存为 .json 文件，可在其他设备导入。</p>
+    <label class="modal-field">
+      <span>文件名</span>
+      <input id="exportName" type="text" spellcheck="false" autocomplete="off" />
+    </label>
+    <div class="modal-actions">
+      <button class="mbtn ghost" id="exportCancel" type="button">取消</button>
+      <button class="mbtn" id="exportOk" type="button">导出</button>
+    </div>
+    <div class="modal-strip"></div>
+  </div>
+</div>
+
+<input type="file" id="importFile" accept=".json,application/json" hidden />
+
+<div class="ctxmenu" id="ctxMenu" hidden>
+  <button id="ctxRename" type="button">重命名</button>
+  <button id="ctxDup" type="button">复制</button>
+  <button id="ctxDel" type="button">删除</button>
+</div>
+
+<div class="hscroll" id="hscroll" hidden><div class="hscroll-thumb" id="hscrollThumb"></div></div>
+<div class="vscroll" id="vscroll" hidden><div class="vscroll-thumb" id="vscrollThumb"></div></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var KEY = 'custom-countdown-quant-v1';
+  var DAY = 86400000;
+
+  var LANGS = [
+    ['en', 'English'],
+    ['fr', 'Français'],
+    ['zh-CN', '简体中文'],
+    ['zh-TW', '繁體中文'],
+    ['ja', '日本語'],
+    ['ko', '한국어'],
+    ['ru', 'Русский'],
+    ['es', 'Español'],
+    ['ar', 'العربية'],
+    ['hi', 'हिन्दी'],
+    ['id', 'Bahasa Indonesia / Melayu']
+  ];
+
+  var I18N = {
+    en: {
+      settings: 'Settings', reset: 'Reset', appearance: 'Appearance',
+      light: 'Light', dark: 'Dark', auto: 'Auto',
+      schedule: 'Edit hours', scheduleN: 'Edit hours ({n})', schedule0: 'Edit hours (none yet)',
+      startTime: 'Start', endTime: 'Deadline', timezone: 'Time zone',
+      smallTitle: 'Small title', bigTitle: 'Big title', footerLabel: 'Footer note (multi-line)',
+      close: 'Close', save: 'Save',
+      note: 'Time is read in the chosen zone. Set both start and deadline. Empty text is hidden. "Reset" (top right) clears everything.',
+      addSlot: '+ Add period', nightPreset: 'Night 22–07',
+      rclick: 'Right-click', deleteHint: 'click a block to delete it',
+      dragHint: 'Drag the ends to resize · drag the middle to move · periods may touch · delete all and save to go manual',
+      day: 'd', hour: 'h', minute: 'm', second: 's',
+      remaining: 'Left', remainingTime: 'Remaining',
+      start: 'From', end: 'To', span: 'Total', elapsed: 'Elapsed',
+      cleaning: 'Cleaning up',
+      zeroTitle: 'Countdown finished', zeroBody: 'The deadline has passed. This countdown is over.',
+      target: 'Target', status: 'Status', ended: 'Ended',
+      confirmTitle: 'Reset everything?',
+      confirmBody: 'Dates and text will be cleared. The page colour fades over about 3 seconds.',
+      cancel: 'Cancel', prePeriod: 'Running\nwarm-up', deadline: 'Deadline',
+      weekday: 'Sun,Mon,Tue,Wed,Thu,Fri,Sat',
+      tzLocal: 'Device local time',
+      tzNames: 'Beijing UTC+8,Tokyo UTC+9,Singapore UTC+8,Dubai UTC+4,London,Berlin,Moscow,New York,Chicago,Los Angeles,Sydney,Auckland',
+      aZone: 'That time zone is unavailable.', aStart: 'Invalid start time.', aEnd: 'Invalid deadline.',
+      aBoth: 'Fill in both start and deadline, or leave both empty.', aParse: 'Could not read that time.',
+      aOrder: 'The deadline must be later than the start.',
+      emptyTl: 'Use "+ Add period" or "Night 22–07" below',
+      phE: 'Set a small title', phT: 'Set a big title', phF: 'Set a footer note',
+      pageTitle: 'Custom countdown', language: 'Language'
+    },
+    fr: {
+      settings: 'Réglages', reset: 'Réinitialiser', appearance: 'Apparence',
+      light: 'Clair', dark: 'Sombre', auto: 'Auto',
+      schedule: 'Modifier les heures', scheduleN: 'Modifier les heures ({n})', schedule0: 'Modifier les heures (aucune)',
+      startTime: 'Début', endTime: 'Échéance', timezone: 'Fuseau horaire',
+      smallTitle: 'Petit titre', bigTitle: 'Grand titre', footerLabel: 'Note de pied (multi-ligne)',
+      close: 'Fermer', save: 'Enregistrer',
+      note: 'L’heure est lue dans le fuseau choisi. Remplissez le début et l’échéance. Un texte vide est masqué. « Réinitialiser » en haut à droite efface tout.',
+      addSlot: '+ Ajouter une plage', nightPreset: 'Nuit 22–07',
+      rclick: 'Clic droit', deleteHint: 'sur un bloc pour le supprimer',
+      dragHint: 'Glissez les bords pour ajuster · le milieu pour déplacer · les plages peuvent se toucher · tout supprimer puis enregistrer = manuel',
+      day: 'j', hour: 'h', minute: 'min', second: 's',
+      remaining: 'Restant', remainingTime: 'Restant',
+      start: 'Début', end: 'Fin', span: 'Total', elapsed: 'Écoulé',
+      cleaning: 'Nettoyage',
+      zeroTitle: 'Compte à rebours terminé', zeroBody: 'L’échéance est passée. Ce compte à rebours est terminé.',
+      target: 'Cible', status: 'État', ended: 'Terminé',
+      confirmTitle: 'Tout réinitialiser ?',
+      confirmBody: 'Les dates et les textes seront effacés. La couleur de la page change en 3 secondes environ.',
+      cancel: 'Annuler', prePeriod: 'En cours\npréparation', deadline: 'Échéance',
+      weekday: 'dim,lun,mar,mer,jeu,ven,sam',
+      tzLocal: 'Heure locale de l’appareil',
+      tzNames: 'Pékin UTC+8,Tokyo UTC+9,Singapour UTC+8,Dubaï UTC+4,Londres,Berlin,Moscou,New York,Chicago,Los Angeles,Sydney,Auckland',
+      aZone: 'Fuseau indisponible.', aStart: 'Heure de début invalide.', aEnd: 'Échéance invalide.',
+      aBoth: 'Remplissez le début et l’échéance, ou laissez les deux vides.', aParse: 'Impossible de lire cette heure.',
+      aOrder: 'L’échéance doit être après le début.',
+      emptyTl: 'Utilisez « + Ajouter une plage » ou « Nuit 22–07 » ci-dessous',
+      phE: 'Définir un petit titre', phT: 'Définir un grand titre', phF: 'Définir une note de pied',
+      pageTitle: 'Compte à rebours', language: 'Langue'
+    },
+    'zh-CN': {
+      settings: '设置', reset: '重置', appearance: '外观',
+      light: '浅色模式', dark: '深色模式', auto: '自动模式',
+      schedule: '编辑时段', scheduleN: '编辑时段（已设 {n} 个）', schedule0: '编辑时段（尚未设置）',
+      startTime: '开始时间', endTime: '截止时间', timezone: '时区',
+      smallTitle: '小标题', bigTitle: '大标题', footerLabel: '下方提示（可换行）',
+      close: '关闭', save: '保存',
+      note: '时间按所选时区解读，开始与截止需同时填写；文案留空即隐藏。右上角「重置」可清空全部设置。',
+      addSlot: '＋ 添加时段', nightPreset: '夜间 22–07',
+      rclick: '右键', deleteHint: '点黑块即可删除',
+      dragHint: '拖两端改边界 · 拖中间平移 · 时段可紧贴 · 删光后保存回到手动',
+      day: '天', hour: '时', minute: '分', second: '秒',
+      remaining: '剩余', remainingTime: '剩余时间',
+      start: '起点', end: '终点', span: '全程', elapsed: '已过',
+      cleaning: '清理中',
+      zeroTitle: '倒计时归零', zeroBody: '目标时间已到，本次计时结束。',
+      target: '目标', status: '状态', ended: '已结束',
+      confirmTitle: '重置全部设置？',
+      confirmBody: '日期与文案会被清空，页面颜色将在约 3 秒内缓慢过渡。',
+      cancel: '取消', prePeriod: '计时中\n预备期', deadline: '截止时间',
+      weekday: '周日,周一,周二,周三,周四,周五,周六',
+      tzLocal: '跟随本机',
+      tzNames: '北京时间 UTC+8,东京 UTC+9,新加坡 UTC+8,迪拜 UTC+4,伦敦,柏林,莫斯科,纽约,芝加哥,洛杉矶,悉尼,奥克兰',
+      aZone: '这个时区不可用。', aStart: '开始时间格式不正确。', aEnd: '截止时间格式不正确。',
+      aBoth: '开始时间与截止时间需同时填写，或者都留空。', aParse: '时间无法解析。',
+      aOrder: '截止时间必须晚于开始时间。',
+      emptyTl: '点下方「＋ 添加时段」或「夜间 22–07」',
+      phE: '请设置上小标题', phT: '请设置大标题', phF: '请设置下方提示文字',
+      pageTitle: '自定义倒计时', language: '语言'
+    },
+    'zh-TW': {
+      settings: '設定', reset: '重設', appearance: '外觀',
+      light: '淺色模式', dark: '深色模式', auto: '自動模式',
+      schedule: '編輯時段', scheduleN: '編輯時段（已設 {n} 個）', schedule0: '編輯時段（尚未設定）',
+      startTime: '開始時間', endTime: '截止時間', timezone: '時區',
+      smallTitle: '小標題', bigTitle: '大標題', footerLabel: '下方提示（可換行）',
+      close: '關閉', save: '儲存',
+      note: '時間依所選時區解讀，開始與截止需同時填寫；文案留空即隱藏。右上角「重設」可清空全部設定。',
+      addSlot: '＋ 新增時段', nightPreset: '夜間 22–07',
+      rclick: '右鍵', deleteHint: '點黑塊即可刪除',
+      dragHint: '拖兩端改邊界 · 拖中間平移 · 時段可緊貼 · 刪光後儲存回到手動',
+      day: '天', hour: '時', minute: '分', second: '秒',
+      remaining: '剩餘', remainingTime: '剩餘時間',
+      start: '起點', end: '終點', span: '全程', elapsed: '已過',
+      cleaning: '清理中',
+      zeroTitle: '倒數歸零', zeroBody: '目標時間已到，本次計時結束。',
+      target: '目標', status: '狀態', ended: '已結束',
+      confirmTitle: '重設全部設定？',
+      confirmBody: '日期與文案會被清空，頁面顏色將在約 3 秒內緩慢過渡。',
+      cancel: '取消', prePeriod: '計時中\n預備期', deadline: '截止時間',
+      weekday: '週日,週一,週二,週三,週四,週五,週六',
+      tzLocal: '跟隨本機',
+      tzNames: '北京時間 UTC+8,東京 UTC+9,新加坡 UTC+8,杜拜 UTC+4,倫敦,柏林,莫斯科,紐約,芝加哥,洛杉磯,雪梨,奧克蘭',
+      aZone: '這個時區無法使用。', aStart: '開始時間格式不正確。', aEnd: '截止時間格式不正確。',
+      aBoth: '開始與截止時間需同時填寫，或都留空。', aParse: '時間無法解析。',
+      aOrder: '截止時間必須晚於開始時間。',
+      emptyTl: '點下方「＋ 新增時段」或「夜間 22–07」',
+      phE: '請設定上小標題', phT: '請設定大標題', phF: '請設定下方提示文字',
+      pageTitle: '自訂倒數', language: '語言'
+    },
+    ja: {
+      settings: '設定', reset: 'リセット', appearance: '外観',
+      light: 'ライト', dark: 'ダーク', auto: '自動',
+      schedule: '時間帯を編集', scheduleN: '時間帯を編集（{n} 件）', schedule0: '時間帯を編集（未設定）',
+      startTime: '開始', endTime: '締切', timezone: 'タイムゾーン',
+      smallTitle: '小見出し', bigTitle: '大見出し', footerLabel: '下部の説明（改行可）',
+      close: '閉じる', save: '保存',
+      note: '時刻は選択したタイムゾーンで解釈されます。開始と締切は両方入力してください。空のテキストは非表示になります。右上の「リセット」で全設定を消去できます。',
+      addSlot: '＋ 時間帯を追加', nightPreset: '夜間 22–07',
+      rclick: '右クリック', deleteHint: '黒いブロックをクリックで削除',
+      dragHint: '両端で長さ変更 · 中央で移動 · 時間帯は隣接可 · 全部消して保存で手動に戻る',
+      day: '日', hour: '時', minute: '分', second: '秒',
+      remaining: '残り', remainingTime: '残り時間',
+      start: '開始', end: '終了', span: '全体', elapsed: '経過',
+      cleaning: 'クリーンアップ中',
+      zeroTitle: 'カウントダウン終了', zeroBody: '締切時刻になりました。この計測は終了です。',
+      target: '目標', status: '状態', ended: '終了',
+      confirmTitle: 'すべてリセットしますか？',
+      confirmBody: '日付とテキストが消去され、背景色は約 3 秒かけて変化します。',
+      cancel: 'キャンセル', prePeriod: '計測中\n準備期間', deadline: '締切',
+      weekday: '日,月,火,水,木,金,土',
+      tzLocal: '端末のローカル時刻',
+      tzNames: '北京 UTC+8,東京 UTC+9,シンガポール UTC+8,ドバイ UTC+4,ロンドン,ベルリン,モスクワ,ニューヨーク,シカゴ,ロサンゼルス,シドニー,オークランド',
+      aZone: 'このタイムゾーンは使えません。', aStart: '開始時間の形式が正しくありません。', aEnd: '締切の形式が正しくありません。',
+      aBoth: '開始と締切は両方入力するか、両方空にしてください。', aParse: '時刻を読み取れませんでした。',
+      aOrder: '締切は開始より後にしてください。',
+      emptyTl: '下の「＋ 時間帯を追加」または「夜間 22–07」を押してください',
+      phE: '小見出しを設定', phT: '大見出しを設定', phF: '下部の説明を設定',
+      pageTitle: 'カスタムカウントダウン', language: '言語'
+    },
+    ko: {
+      settings: '설정', reset: '초기화', appearance: '모양',
+      light: '라이트', dark: '다크', auto: '자동',
+      schedule: '시간대 편집', scheduleN: '시간대 편집 ({n}개)', schedule0: '시간대 편집 (미설정)',
+      startTime: '시작 시간', endTime: '마감', timezone: '시간대',
+      smallTitle: '작은 제목', bigTitle: '큰 제목', footerLabel: '하단 안내 (줄바꿈 가능)',
+      close: '닫기', save: '저장',
+      note: '시간은 선택한 시간대로 해석됩니다. 시작과 마감을 모두 입력하세요. 빈 텍스트는 숨겨집니다. 오른쪽 위 초기화로 모든 설정을 지울 수 있습니다.',
+      addSlot: '＋ 시간대 추가', nightPreset: '야간 22–07',
+      rclick: '오른쪽 클릭', deleteHint: '검은 블록을 클릭하면 삭제',
+      dragHint: '양끝을 끌어 조정 · 가운데를 끌어 이동 · 시간대는 붙을 수 있음 · 모두 지우고 저장하면 수동',
+      day: '일', hour: '시', minute: '분', second: '초',
+      remaining: '남음', remainingTime: '남은 시간',
+      start: '시작', end: '종료', span: '전체', elapsed: '경과',
+      cleaning: '정리 중',
+      zeroTitle: '카운트다운 종료', zeroBody: '마감 시간이 되었습니다. 이 계측은 종료되었습니다.',
+      target: '목표', status: '상태', ended: '종료됨',
+      confirmTitle: '모든 설정을 초기화할까요?',
+      confirmBody: '날짜와 텍스트가 지워지고 배경색은 약 3초에 걸쳐 바뀝니다.',
+      cancel: '취소', prePeriod: '계측 중\n준비 기간', deadline: '마감',
+      weekday: '일,월,화,수,목,금,토',
+      tzLocal: '기기 로컬 시간',
+      tzNames: '베이징 UTC+8,도쿄 UTC+9,싱가포르 UTC+8,두바이 UTC+4,런던,베를린,모스크바,뉴욕,시카고,로스앤젤레스,시드니,오클랜드',
+      aZone: '이 시간대는 사용할 수 없습니다.', aStart: '시작 시간 형식이 올바르지 않습니다.', aEnd: '마감 형식이 올바르지 않습니다.',
+      aBoth: '시작과 마감을 모두 입력하거나 둘 다 비워 두세요.', aParse: '시간을 해석할 수 없습니다.',
+      aOrder: '마감은 시작보다 뒤여야 합니다.',
+      emptyTl: '아래의 ＋ 시간대 추가 또는 야간 22–07을 누르세요',
+      phE: '작은 제목 설정', phT: '큰 제목 설정', phF: '하단 안내 설정',
+      pageTitle: '사용자 지정 카운트다운', language: '언어'
+    },
+    ru: {
+      settings: 'Настройки', reset: 'Сброс', appearance: 'Оформление',
+      light: 'Светлая', dark: 'Тёмная', auto: 'Авто',
+      schedule: 'Изменить часы', scheduleN: 'Изменить часы ({n})', schedule0: 'Изменить часы (не задано)',
+      startTime: 'Начало', endTime: 'Дедлайн', timezone: 'Часовой пояс',
+      smallTitle: 'Малый заголовок', bigTitle: 'Крупный заголовок', footerLabel: 'Нижняя подпись (с переносом)',
+      close: 'Закрыть', save: 'Сохранить',
+      note: 'Время читается в выбранном поясе. Укажите и начало, и дедлайн. Пустой текст скрывается. «Сброс» справа сверху очищает все настройки.',
+      addSlot: '+ Добавить период', nightPreset: 'Ночь 22–07',
+      rclick: 'Правый клик', deleteHint: 'клик по блоку удаляет его',
+      dragHint: 'Тяните края для изменения · середину для переноса · периоды могут вплотную · удалите всё и сохраните — ручной режим',
+      day: 'д', hour: 'ч', minute: 'мин', second: 'с',
+      remaining: 'Осталось', remainingTime: 'Остаток',
+      start: 'Начало', end: 'Конец', span: 'Всего', elapsed: 'Прошло',
+      cleaning: 'Очистка',
+      zeroTitle: 'Отсчёт завершён', zeroBody: 'Дедлайн наступил. Этот отсчёт закончен.',
+      target: 'Цель', status: 'Статус', ended: 'Завершено',
+      confirmTitle: 'Сбросить все настройки?',
+      confirmBody: 'Даты и тексты будут стёрты. Цвет страницы изменится примерно за 3 секунды.',
+      cancel: 'Отмена', prePeriod: 'Идёт отсчёт\nподготовка', deadline: 'Дедлайн',
+      weekday: 'вс,пн,вт,ср,чт,пт,сб',
+      tzLocal: 'Местное время устройства',
+      tzNames: 'Пекин UTC+8,Токио UTC+9,Сингапур UTC+8,Дубай UTC+4,Лондон,Берлин,Москва,Нью-Йорк,Чикаго,Лос-Анджелес,Сидней,Окленд',
+      aZone: 'Этот пояс недоступен.', aStart: 'Неверный формат начала.', aEnd: 'Неверный формат дедлайна.',
+      aBoth: 'Укажите и начало, и дедлайн, либо оставьте оба пустыми.', aParse: 'Не удалось разобрать время.',
+      aOrder: 'Дедлайн должен быть позже начала.',
+      emptyTl: 'Нажмите «+ Добавить период» или «Ночь 22–07» ниже',
+      phE: 'Задайте малый заголовок', phT: 'Задайте крупный заголовок', phF: 'Задайте нижнюю подпись',
+      pageTitle: 'Свой отсчёт', language: 'Язык'
+    },
+    es: {
+      settings: 'Ajustes', reset: 'Restablecer', appearance: 'Apariencia',
+      light: 'Claro', dark: 'Oscuro', auto: 'Auto',
+      schedule: 'Editar horas', scheduleN: 'Editar horas ({n})', schedule0: 'Editar horas (sin definir)',
+      startTime: 'Inicio', endTime: 'Fecha límite', timezone: 'Zona horaria',
+      smallTitle: 'Título pequeño', bigTitle: 'Título grande', footerLabel: 'Nota inferior (varias líneas)',
+      close: 'Cerrar', save: 'Guardar',
+      note: 'La hora se lee en la zona elegida. Rellena inicio y fecha límite. El texto vacío se oculta. «Restablecer» arriba a la derecha borra todo.',
+      addSlot: '+ Añadir tramo', nightPreset: 'Noche 22–07',
+      rclick: 'Clic derecho', deleteHint: 'clic en un bloque para borrarlo',
+      dragHint: 'Arrastra los bordes para ajustar · el centro para mover · los tramos pueden tocarse · borra todo y guarda para volver a manual',
+      day: 'd', hour: 'h', minute: 'min', second: 's',
+      remaining: 'Queda', remainingTime: 'Restante',
+      start: 'Inicio', end: 'Fin', span: 'Total', elapsed: 'Transcurrido',
+      cleaning: 'Limpiando',
+      zeroTitle: 'Cuenta atrás terminada', zeroBody: 'La fecha límite ha llegado. Esta cuenta atrás ha terminado.',
+      target: 'Objetivo', status: 'Estado', ended: 'Terminado',
+      confirmTitle: '¿Restablecer todo?',
+      confirmBody: 'Se borrarán las fechas y los textos. El color de la página cambiará en unos 3 segundos.',
+      cancel: 'Cancelar', prePeriod: 'En marcha\npreparación', deadline: 'Fecha límite',
+      weekday: 'dom,lun,mar,mié,jue,vie,sáb',
+      tzLocal: 'Hora local del dispositivo',
+      tzNames: 'Pekín UTC+8,Tokio UTC+9,Singapur UTC+8,Dubái UTC+4,Londres,Berlín,Moscú,Nueva York,Chicago,Los Ángeles,Sídney,Auckland',
+      aZone: 'Zona no disponible.', aStart: 'Hora de inicio no válida.', aEnd: 'Fecha límite no válida.',
+      aBoth: 'Rellena inicio y fecha límite, o deja ambos vacíos.', aParse: 'No se pudo leer la hora.',
+      aOrder: 'La fecha límite debe ser posterior al inicio.',
+      emptyTl: 'Pulsa «+ Añadir tramo» o «Noche 22–07» abajo',
+      phE: 'Define el título pequeño', phT: 'Define el título grande', phF: 'Define la nota inferior',
+      pageTitle: 'Cuenta atrás', language: 'Idioma'
+    },
+    ar: {
+      settings: 'الإعدادات', reset: 'إعادة تعيين', appearance: 'المظهر',
+      light: 'فاتح', dark: 'داكن', auto: 'تلقائي',
+      schedule: 'تعديل الأوقات', scheduleN: 'تعديل الأوقات ({n})', schedule0: 'تعديل الأوقات (غير محدد)',
+      startTime: 'وقت البداية', endTime: 'الموعد النهائي', timezone: 'المنطقة الزمنية',
+      smallTitle: 'عنوان صغير', bigTitle: 'عنوان كبير', footerLabel: 'ملاحظة سفلية (أسطر متعددة)',
+      close: 'إغلاق', save: 'حفظ',
+      note: 'يُقرأ الوقت في المنطقة المختارة. املأ البداية والموعد النهائي. النص الفارغ يُخفى. «إعادة تعيين» أعلى اليمين تمسح كل شيء.',
+      addSlot: '＋ إضافة فترة', nightPreset: 'ليل 22–07',
+      rclick: 'زر أيمن', deleteHint: 'انقر على الكتلة لحذفها',
+      dragHint: 'اسحب الطرفين للتغيير · الوسط للنقل · يمكن أن تتلاصق الفترات · احذف الكل واحفظ للعودة إلى اليدوي',
+      day: 'ي', hour: 'س', minute: 'د', second: 'ث',
+      remaining: 'المتبقي', remainingTime: 'الوقت المتبقي',
+      start: 'البداية', end: 'النهاية', span: 'الإجمالي', elapsed: 'المنقضي',
+      cleaning: 'جارٍ التنظيف',
+      zeroTitle: 'انتهى العد التنازلي', zeroBody: 'حان الموعد النهائي. انتهى هذا العد التنازلي.',
+      target: 'الهدف', status: 'الحالة', ended: 'منتهٍ',
+      confirmTitle: 'إعادة تعيين كل شيء؟',
+      confirmBody: 'ستُمسح التواريخ والنصوص. سيتغير لون الصفحة خلال ٣ ثوانٍ تقريبًا.',
+      cancel: 'إلغاء', prePeriod: 'قيد التشغيل\nفترة تحضير', deadline: 'الموعد النهائي',
+      weekday: 'أحد,اثنين,ثلاثاء,أربعاء,خميس,جمعة,سبت',
+      tzLocal: 'التوقيت المحلي للجهاز',
+      tzNames: 'بكين UTC+8,طوكيو UTC+9,سنغافورة UTC+8,دبي UTC+4,لندن,برلين,موسكو,نيويورك,شيكاغو,لوس أنجلوس,سيدني,أوكلاند',
+      aZone: 'هذه المنطقة غير متاحة.', aStart: 'صيغة وقت البداية غير صحيحة.', aEnd: 'صيغة الموعد النهائي غير صحيحة.',
+      aBoth: 'املأ البداية والموعد النهائي، أو اتركهما فارغين.', aParse: 'تعذّر قراءة الوقت.',
+      aOrder: 'يجب أن يكون الموعد النهائي بعد البداية.',
+      emptyTl: 'اضغط «＋ إضافة فترة» أو «ليل 22–07» أدناه',
+      phE: 'حدّد العنوان الصغير', phT: 'حدّد العنوان الكبير', phF: 'حدّد الملاحظة السفلية',
+      pageTitle: 'عد تنازلي مخصص', language: 'اللغة'
+    },
+    hi: {
+      settings: 'सेटिंग', reset: 'रीसेट', appearance: 'रूप',
+      light: 'लाइट', dark: 'डार्क', auto: 'ऑटो',
+      schedule: 'समय संपादित करें', scheduleN: 'समय संपादित करें ({n})', schedule0: 'समय संपादित करें (अभी नहीं)',
+      startTime: 'शुरू का समय', endTime: 'समय-सीमा', timezone: 'समय क्षेत्र',
+      smallTitle: 'छोटा शीर्षक', bigTitle: 'बड़ा शीर्षक', footerLabel: 'नीचे का संदेश (कई पंक्तियाँ)',
+      close: 'बंद करें', save: 'सहेजें',
+      note: 'समय चुने गए क्षेत्र में पढ़ा जाता है। शुरू और समाप्ति दोनों भरें। खाली टेक्स्ट छिप जाता है। ऊपर दाएँ «रीसेट» सब कुछ मिटा देता है।',
+      addSlot: '＋ अवधि जोड़ें', nightPreset: 'रात 22–07',
+      rclick: 'राइट-क्लिक', deleteHint: 'ब्लॉक पर क्लिक करके हटाएँ',
+      dragHint: 'किनारों को खींचें · बीच से खिसकाएँ · अवधियाँ सट सकती हैं · सब हटाकर सहेजें = मैनुअल',
+      day: 'दिन', hour: 'घं', minute: 'मि', second: 'से',
+      remaining: 'शेष', remainingTime: 'शेष समय',
+      start: 'शुरू', end: 'अंत', span: 'कुल', elapsed: 'बीता',
+      cleaning: 'साफ़ किया जा रहा है',
+      zeroTitle: 'उलटी गिनती पूरी', zeroBody: 'समय-सीमा आ गई। यह गिनती समाप्त हुई।',
+      target: 'लक्ष्य', status: 'स्थिति', ended: 'समाप्त',
+      confirmTitle: 'सब कुछ रीसेट करें?',
+      confirmBody: 'तारीख़ें और टेक्स्ट मिट जाएंगे। पेज का रंग लगभग 3 सेकंड में बदलेगा।',
+      cancel: 'रद्द करें', prePeriod: 'चल रहा है\nतैयारी', deadline: 'समय-सीमा',
+      weekday: 'रवि,सोम,मंगल,बुध,गुरु,शुक्र,शनि',
+      tzLocal: 'डिवाइस का स्थानीय समय',
+      tzNames: 'बीजिंग UTC+8,टोक्यो UTC+9,सिंगापुर UTC+8,दुबई UTC+4,लंदन,बर्लिन,मॉस्को,न्यूयॉर्क,शिकागो,लॉस एंजिल्स,सिडनी,ऑकलैंड',
+      aZone: 'यह समय क्षेत्र उपलब्ध नहीं है।', aStart: 'शुरू का समय ग़लत है।', aEnd: 'समय-सीमा ग़लत है।',
+      aBoth: 'शुरू और समय-सीमा दोनों भरें, या दोनों खाली छोड़ें।', aParse: 'समय समझा नहीं जा सका।',
+      aOrder: 'समय-सीमा शुरू के बाद होनी चाहिए।',
+      emptyTl: 'नीचे «＋ अवधि जोड़ें» या «रात 22–07» दबाएँ',
+      phE: 'छोटा शीर्षक सेट करें', phT: 'बड़ा शीर्षक सेट करें', phF: 'नीचे का संदेश सेट करें',
+      pageTitle: 'कस्टम उलटी गिनती', language: 'भाषा'
+    },
+    id: {
+      settings: 'Pengaturan', reset: 'Atur ulang', appearance: 'Tampilan',
+      light: 'Terang', dark: 'Gelap', auto: 'Otomatis',
+      schedule: 'Edit jam', scheduleN: 'Edit jam ({n})', schedule0: 'Edit jam (belum diatur)',
+      startTime: 'Waktu mulai', endTime: 'Tenggat', timezone: 'Zona waktu',
+      smallTitle: 'Judul kecil', bigTitle: 'Judul besar', footerLabel: 'Catatan bawah (bisa banyak baris)',
+      close: 'Tutup', save: 'Simpan',
+      note: 'Waktu dibaca di zona yang dipilih. Isi mulai dan tenggat. Teks kosong disembunyikan. "Atur ulang" kanan atas menghapus semua.',
+      addSlot: '+ Tambah periode', nightPreset: 'Malam 22–07',
+      rclick: 'Klik kanan', deleteHint: 'klik blok untuk menghapusnya',
+      dragHint: 'Seret ujung untuk mengubah · tengah untuk menggeser · periode boleh menempel · hapus semua lalu simpan untuk manual',
+      day: 'hri', hour: 'jam', minute: 'mnt', second: 'dtk',
+      remaining: 'Tersisa', remainingTime: 'Sisa waktu',
+      start: 'Mulai', end: 'Akhir', span: 'Total', elapsed: 'Berlalu',
+      cleaning: 'Membersihkan',
+      zeroTitle: 'Hitungan mundur selesai', zeroBody: 'Tenggat telah tiba. Hitungan mundur ini berakhir.',
+      target: 'Target', status: 'Status', ended: 'Selesai',
+      confirmTitle: 'Atur ulang semuanya?',
+      confirmBody: 'Tanggal dan teks akan dihapus. Warna halaman berubah dalam sekitar 3 detik.',
+      cancel: 'Batal', prePeriod: 'Berjalan\nmasa persiapan', deadline: 'Tenggat',
+      weekday: 'Min,Sen,Sel,Rab,Kam,Jum,Sab',
+      tzLocal: 'Waktu lokal perangkat',
+      tzNames: 'Beijing UTC+8,Tokyo UTC+9,Singapura UTC+8,Dubai UTC+4,London,Berlin,Moskow,New York,Chicago,Los Angeles,Sydney,Auckland',
+      aZone: 'Zona ini tidak tersedia.', aStart: 'Format waktu mulai salah.', aEnd: 'Format tenggat salah.',
+      aBoth: 'Isi mulai dan tenggat, atau kosongkan keduanya.', aParse: 'Waktu tidak dapat dibaca.',
+      aOrder: 'Tenggat harus setelah mulai.',
+      emptyTl: 'Tekan "+ Tambah periode" atau "Malam 22–07" di bawah',
+      phE: 'Atur judul kecil', phT: 'Atur judul besar', phF: 'Atur catatan bawah',
+      pageTitle: 'Hitungan mundur khusus', language: 'Bahasa'
+    }
+  };
+
+  var EXTRA = {
+    en: { exp: 'Export', imp: 'Import', expTitle: 'Export settings', expBody: 'Saved as a .json file you can import elsewhere.', expName: 'File name', impBad: 'That file could not be read.', author: 'Author', tasks: 'Tasks', newTask: 'New task', rename: 'Rename', del: 'Delete', dup: 'Duplicate', openDir: 'Open tasks folder' },
+    fr: { exp: 'Exporter', imp: 'Importer', expTitle: 'Exporter les réglages', expBody: 'Enregistré en .json, réimportable ailleurs.', expName: 'Nom du fichier', impBad: 'Fichier illisible.', author: 'Auteur', tasks: 'Tâches', newTask: 'Nouvelle tâche', rename: 'Renommer', del: 'Supprimer', dup: 'Dupliquer', openDir: 'Ouvrir le dossier' },
+    'zh-CN': { exp: '导出', imp: '导入', expTitle: '导出配置', expBody: '保存为 .json 文件，可在其他设备导入。', expName: '文件名', impBad: '无法读取该配置文件。', author: '作者', tasks: '任务', newTask: '新建任务', rename: '重命名', del: '删除', dup: '复制', openDir: '打开配置文件夹' },
+    'zh-TW': { exp: '匯出', imp: '匯入', expTitle: '匯出設定', expBody: '儲存為 .json 檔，可在其他裝置匯入。', expName: '檔名', impBad: '無法讀取該設定檔。', author: '作者', tasks: '任務', newTask: '新增任務', rename: '重新命名', del: '刪除', dup: '複製', openDir: '開啟設定資料夾' },
+    ja: { exp: 'エクスポート', imp: 'インポート', expTitle: '設定をエクスポート', expBody: '.json ファイルとして保存され、他の端末で読み込めます。', expName: 'ファイル名', impBad: 'このファイルは読み込めません。', author: '作者', tasks: 'タスク', newTask: '新しいタスク', rename: '名前を変更', del: '削除', dup: '複製', openDir: 'フォルダを開く' },
+    ko: { exp: '내보내기', imp: '가져오기', expTitle: '설정 내보내기', expBody: '.json 파일로 저장되어 다른 기기에서 가져올 수 있습니다.', expName: '파일 이름', impBad: '이 파일을 읽을 수 없습니다.', author: '제작자', tasks: '작업', newTask: '새 작업', rename: '이름 바꾸기', del: '삭제', dup: '복제', openDir: '폴더 열기' },
+    ru: { exp: 'Экспорт', imp: 'Импорт', expTitle: 'Экспорт настроек', expBody: 'Сохраняется в .json и импортируется на другом устройстве.', expName: 'Имя файла', impBad: 'Не удалось прочитать файл.', author: 'Автор', tasks: 'Задачи', newTask: 'Новая задача', rename: 'Переименовать', del: 'Удалить', dup: 'Дублировать', openDir: 'Открыть папку' },
+    es: { exp: 'Exportar', imp: 'Importar', expTitle: 'Exportar ajustes', expBody: 'Se guarda como .json para importar en otro equipo.', expName: 'Nombre del archivo', impBad: 'No se pudo leer el archivo.', author: 'Autor', tasks: 'Tareas', newTask: 'Nueva tarea', rename: 'Renombrar', del: 'Eliminar', dup: 'Duplicar', openDir: 'Abrir carpeta' },
+    ar: { exp: 'تصدير', imp: 'استيراد', expTitle: 'تصدير الإعدادات', expBody: 'يُحفظ كملف .json يمكن استيراده في مكان آخر.', expName: 'اسم الملف', impBad: 'تعذّرت قراءة الملف.', author: 'المؤلف', tasks: 'المهام', newTask: 'مهمة جديدة', rename: 'إعادة تسمية', del: 'حذف', dup: 'تكرار', openDir: 'فتح المجلد' },
+    hi: { exp: 'निर्यात', imp: 'आयात', expTitle: 'सेटिंग निर्यात करें', expBody: '.json फ़ाइल में सहेजा जाता है, कहीं और आयात कर सकते हैं।', expName: 'फ़ाइल नाम', impBad: 'यह फ़ाइल पढ़ी नहीं जा सकी।', author: 'लेखक', tasks: 'कार्य', newTask: 'नया कार्य', rename: 'नाम बदलें', del: 'हटाएँ', dup: 'प्रतिलिपि', openDir: 'फ़ोल्डर खोलें' },
+    id: { exp: 'Ekspor', imp: 'Impor', expTitle: 'Ekspor pengaturan', expBody: 'Disimpan sebagai .json, bisa diimpor di tempat lain.', expName: 'Nama berkas', impBad: 'Berkas ini tidak dapat dibaca.', author: 'Penulis', tasks: 'Tugas', newTask: 'Tugas baru', rename: 'Ganti nama', del: 'Hapus', dup: 'Duplikat', openDir: 'Buka folder' }
+  };
+  for (var lk in EXTRA) {
+    for (var ek in EXTRA[lk]) I18N[lk][ek] = EXTRA[lk][ek];
+  }
+
+  var EXTRA2 = {
+    en: { progress: 'Progress', scale: 'Interface scale', alertBg: 'Background turns red over time', fullscreen: 'Fullscreen', fullHint: 'Press F11 to toggle' },
+    fr: { progress: 'Progression', scale: 'Échelle de l\u2019interface', alertBg: 'Le fond rougit avec le temps', fullscreen: 'Plein écran', fullHint: 'Appuyer sur F11' },
+    'zh-CN': { progress: '进度', scale: '界面缩放', alertBg: '背景随时间变红', fullscreen: '全屏模式', fullHint: '按 F11 切换' },
+    'zh-TW': { progress: '進度', scale: '介面縮放', alertBg: '背景隨時間變紅', fullscreen: '全螢幕模式', fullHint: '按 F11 切換' },
+    ja: { progress: '進捗', scale: '表示倍率', alertBg: '背景が時間とともに赤くなる', fullscreen: 'フルスクリーン', fullHint: 'F11 で切り替え' },
+    ko: { progress: '진행', scale: '화면 배율', alertBg: '배경이 시간에 따라 붉어짐', fullscreen: '전체 화면', fullHint: 'F11로 전환' },
+    ru: { progress: 'Прогресс', scale: 'Масштаб интерфейса', alertBg: 'Фон краснеет со временем', fullscreen: 'Полноэкранный режим', fullHint: 'Переключение по F11' },
+    es: { progress: 'Progreso', scale: 'Escala de la interfaz', alertBg: 'El fondo se vuelve rojo con el tiempo', fullscreen: 'Pantalla completa', fullHint: 'Pulsa F11' },
+    ar: { progress: 'التقدم', scale: 'مقياس الواجهة', alertBg: 'تتحول الخلفية إلى الأحمر مع الوقت', fullscreen: 'ملء الشاشة', fullHint: 'اضغط F11 للتبديل' },
+    hi: { progress: 'प्रगति', scale: 'इंटरफ़ेस स्केल', alertBg: 'समय के साथ पृष्ठभूमि लाल होती जाती है', fullscreen: 'फ़ुलस्क्रीन', fullHint: 'F11 से बदलें' },
+    id: { progress: 'Kemajuan', scale: 'Skala antarmuka', alertBg: 'Latar belakang memerah seiring waktu', fullscreen: 'Layar penuh', fullHint: 'Tekan F11' }
+  };
+  for (var lk2 in EXTRA2) {
+    for (var ek2 in EXTRA2[lk2]) I18N[lk2][ek2] = EXTRA2[lk2][ek2];
+  }
+
+  var EXTRA3 = {
+    en: { autoHide: 'Auto-hide', autoHideHint: 'Auto-hide when scrolled against an edge; the right column hides it for good', hideColAuto: 'Near edge', hideColAlways: 'Always hide', hideTopLbl: 'Top-right buttons', hideFooterLbl: 'Footer note', hideEyebrowLbl: 'Small title' },
+    fr: { autoHide: 'Masquage auto', autoHideHint: 'Masquage auto quand le defilement le coupe au bord ; la colonne de droite le masque definitivement', hideColAuto: 'Près du bord', hideColAlways: 'Masqué', hideTopLbl: 'Boutons en haut à droite', hideFooterLbl: 'Note du bas', hideEyebrowLbl: 'Petit titre' },
+    'zh-CN': { autoHide: '自动隐藏', autoHideHint: '滚动被边缘切到时自动隐藏；右列为永久隐藏', hideColAuto: '靠近边缘隐藏', hideColAlways: '直接隐藏', hideTopLbl: '右上角按钮', hideFooterLbl: '下方提示', hideEyebrowLbl: '小标题' },
+    'zh-TW': { autoHide: '自動隱藏', autoHideHint: '捲動被邊緣切到時自動隱藏；右欄為永久隱藏', hideColAuto: '靠近邊緣隱藏', hideColAlways: '直接隱藏', hideTopLbl: '右上角按鈕', hideFooterLbl: '下方提示', hideEyebrowLbl: '小標題' },
+    ja: { autoHide: '自動非表示', autoHideHint: 'スクロールで端に隠れたら自動非表示；右列は完全非表示', hideColAuto: '端で隠す', hideColAlways: '常に隠す', hideTopLbl: '右上のボタン', hideFooterLbl: '下部の説明', hideEyebrowLbl: '小見出し' },
+    ko: { autoHide: '자동 숨김', autoHideHint: '스크롤 시 가장자리에 가려지면 자동 숨김; 오른쪽 열은 완전 숨김', hideColAuto: '가장자리', hideColAlways: '항상 숨김', hideTopLbl: '오른쪽 위 버튼', hideFooterLbl: '하단 안내', hideEyebrowLbl: '작은 제목' },
+    ru: { autoHide: 'Автоскрытие', autoHideHint: 'Автоскрытие при обрезке краем; правый столбец скрывает полностью', hideColAuto: 'У края', hideColAlways: 'Всегда', hideTopLbl: 'Кнопки справа сверху', hideFooterLbl: 'Нижняя подпись', hideEyebrowLbl: 'Малый заголовок' },
+    es: { autoHide: 'Ocultar auto', autoHideHint: 'Ocultar al cortarse con el borde; la columna derecha lo oculta del todo', hideColAuto: 'En el borde', hideColAlways: 'Siempre', hideTopLbl: 'Botones arriba a la derecha', hideFooterLbl: 'Nota inferior', hideEyebrowLbl: 'Título pequeño' },
+    ar: { autoHide: 'إخفاء تلقائي', autoHideHint: 'إخفاء تلقائي عند قصّه بالحدود؛ العمود الأيمن يخفيه نهائيًا', hideColAuto: 'عند الحد', hideColAlways: 'دائمًا', hideTopLbl: 'أزرار أعلى اليمين', hideFooterLbl: 'ملاحظة سفلية', hideEyebrowLbl: 'عنوان صغير' },
+    hi: { autoHide: 'स्वतः छिपाएँ', autoHideHint: 'किनारे से कटने पर स्वतः छिपाएँ; दायाँ स्तंभ पूर्णतः छिपाता है', hideColAuto: 'किनारे पर', hideColAlways: 'हमेशा', hideTopLbl: 'ऊपर-दाएँ बटन', hideFooterLbl: 'नीचे का संदेश', hideEyebrowLbl: 'छोटा शीर्षक' },
+    id: { autoHide: 'Sembunyi otomatis', autoHideHint: 'Sembunyi otomatis saat terpotong tepi; kolom kanan menyembunyikan permanen', hideColAuto: 'Di tepi', hideColAlways: 'Permanen', hideTopLbl: 'Tombol kanan atas', hideFooterLbl: 'Catatan bawah', hideEyebrowLbl: 'Judul kecil' }
+  };
+  for (var lk3 in EXTRA3) {
+    for (var ek3 in EXTRA3[lk3]) I18N[lk3][ek3] = EXTRA3[lk3][ek3];
+  }
+
+  var EXTRA4 = {
+    en: { toStart: 'To start' },
+    fr: { toStart: 'Jusqu\u2019au début' },
+    'zh-CN': { toStart: '距离起点' },
+    'zh-TW': { toStart: '距離起點' },
+    ja: { toStart: '開始まで' },
+    ko: { toStart: '시작까지' },
+    ru: { toStart: 'До начала' },
+    es: { toStart: 'Hasta el inicio' },
+    ar: { toStart: 'حتى البداية' },
+    hi: { toStart: 'शुरू होने तक' },
+    id: { toStart: 'Menuju mulai' }
+  };
+  for (var lk4 in EXTRA4) {
+    for (var ek4 in EXTRA4[lk4]) I18N[lk4][ek4] = EXTRA4[lk4][ek4];
+  }
+
+  var EXTRA4 = {
+    en: { sectTime: 'Time', sectText: 'Text', resetSect: 'Reset' },
+    fr: { sectTime: 'Temps', sectText: 'Textes', resetSect: 'Réinitialiser' },
+    'zh-CN': { sectTime: '时间', sectText: '文案', resetSect: '重置' },
+    'zh-TW': { sectTime: '時間', sectText: '文案', resetSect: '重置' },
+    ja: { sectTime: '時間', sectText: 'テキスト', resetSect: 'リセット' },
+    ko: { sectTime: '시간', sectText: '텍스트', resetSect: '초기화' },
+    ru: { sectTime: 'Время', sectText: 'Текст', resetSect: 'Сбросить' },
+    es: { sectTime: 'Tiempo', sectText: 'Texto', resetSect: 'Restablecer' },
+    ar: { sectTime: 'الوقت', sectText: 'النصوص', resetSect: 'إعادة تعيين' },
+    hi: { sectTime: 'समय', sectText: 'टेक्स्ट', resetSect: 'रीसेट' },
+    id: { sectTime: 'Waktu', sectText: 'Teks', resetSect: 'Atur ulang' }
+  };
+  for (var lk4 in EXTRA4) {
+    for (var ek4 in EXTRA4[lk4]) I18N[lk4][ek4] = EXTRA4[lk4][ek4];
+  }
+
+  var lang = 'zh-CN';
+
+  function t(k) {
+    var d = I18N[lang] || I18N['zh-CN'];
+    var v = d[k];
+    if (v === undefined) v = I18N['zh-CN'][k];
+    return v === undefined ? k : v;
+  }
+
+  var PH = { eyebrow: '', title: '', footer: '' };
+
+  var ZONES = [
+    'Asia/Shanghai', 'Asia/Tokyo', 'Asia/Singapore', 'Asia/Dubai',
+    'Europe/London', 'Europe/Berlin', 'Europe/Moscow',
+    'America/New_York', 'America/Chicago', 'America/Los_Angeles',
+    'Australia/Sydney', 'Pacific/Auckland', 'UTC'
+  ];
+
+  var state = {
+    start: null,
+    end: null,
+    tz: 'local',
+    theme: 'light',
+    themeMode: 'manual',
+    schedule: [],
+    alert: false,
+    hideTop: true,
+    hideFooter: true,
+    hideEyebrow: false,
+    forceEyebrow: false,
+    forceFooter: false,
+    lang: 'zh-CN',
+    eyebrow: '',
+    title: '',
+    footer: ''
+  };
+
+  /* ---------- 基础工具 ---------- */
+
+  function $(id) { return document.getElementById(id); }
+
+  function pad(n, w) {
+    n = String(n);
+    while (n.length < (w || 2)) n = '0' + n;
+    return n;
+  }
+
+  function parseWall(s) {
+    var m = /^(\d{4})-(\d{1,2})-(\d{1,2})[T ](\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(String(s || '').trim());
+    if (!m) return null;
+    var y = +m[1], mo = +m[2], d = +m[3], h = +m[4], mi = +m[5], se = m[6] === undefined ? 0 : +m[6];
+    if (mo < 1 || mo > 12) return null;
+    if (d < 1 || d > 31) return null;
+    if (h > 23 || mi > 59 || se > 59) return null;
+    return [y, mo, d, h, mi, se];
+  }
+
+  var fmts = {};
+  function fmtFor(tz) {
+    if (!fmts[tz]) {
+      fmts[tz] = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz, hourCycle: 'h23',
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      });
+    }
+    return fmts[tz];
+  }
+
+  function partsIn(ts, tz) {
+    var arr = fmtFor(tz).formatToParts(new Date(ts));
+    var out = {};
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].type !== 'literal') out[arr[i].type] = arr[i].value;
+    }
+    return {
+      y: +out.year, mo: +out.month, d: +out.day,
+      h: (+out.hour) % 24, mi: +out.minute, s: +out.second
+    };
+  }
+
+  function offsetMs(tz, ts) {
+    var p = partsIn(ts, tz);
+    var asUTC = Date.UTC(p.y, p.mo - 1, p.d, p.h, p.mi, p.s);
+    return asUTC - Math.floor(ts / 1000) * 1000;
+  }
+
+  function wallToTs(wall, tz) {
+    var a = parseWall(wall);
+    if (!a) return null;
+    var naive = Date.UTC(a[0], a[1] - 1, a[2], a[3], a[4], a[5]);
+    var ts = naive;
+    for (var i = 0; i < 3; i++) {
+      var next = naive - offsetMs(tz, ts);
+      if (next === ts) break;
+      ts = next;
+    }
+    return ts;
+  }
+
+  function validZone(z) {
+    if (z === 'local') return true;
+    try { new Intl.DateTimeFormat('en-US', { timeZone: z }); return true; }
+    catch (e) { return false; }
+  }
+
+  function resolveZone(z) {
+    if (z && z !== 'local') return z;
+    try { return Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai'; }
+    catch (e) { return 'Asia/Shanghai'; }
+  }
+
+  function tzId() { return resolveZone(state.tz); }
+
+  function zoneName(tz) {
+    if (tz === 'local') return t('tzLocal');
+    var i = ZONES.indexOf(tz);
+    if (i < 0) return tz;
+    var names = t('tzNames').split(',');
+    return names[i] || tz;
+  }
+
+  function offsetLabel(ms) {
+    var sign = ms < 0 ? '-' : '+';
+    var abs = Math.abs(ms);
+    var h = Math.floor(abs / 3600000);
+    var mi = Math.round((abs % 3600000) / 60000);
+    return 'UTC' + sign + pad(h) + ':' + pad(mi);
+  }
+
+  function stamp(p) {
+    return p.y + '-' + pad(p.mo) + '-' + pad(p.d) + ' ' + pad(p.h) + ':' + pad(p.mi);
+  }
+
+  function stampSec(p) {
+    return stamp(p) + ':' + pad(p.s);
+  }
+
+  function weekOf(p) {
+    return t('weekday').split(',')[new Date(Date.UTC(p.y, p.mo - 1, p.d)).getUTCDay()];
+  }
+
+  /* ---------- 底色渐变 ---------- */
+
+  var PAL = {
+    light: { bg0: [255, 255, 255], bg1: [255, 43, 43] },
+    dark: { bg0: [10, 10, 10], bg1: [255, 43, 43] }
+  };
+  var lastTone = -1, lastT = 0, toneFrozen = false;
+
+  function mixc(a, b, t) {
+    return 'rgb(' + Math.round(a[0] + (b[0] - a[0]) * t) + ',' +
+      Math.round(a[1] + (b[1] - a[1]) * t) + ',' +
+      Math.round(a[2] + (b[2] - a[2]) * t) + ')';
+  }
+
+  /* t = 0 主题底色，t = 1 亮红；文字颜色由主题决定，不参与渐变 */
+  function tone(t) {
+    if (!(t >= 0)) t = 0;
+    if (t > 1) t = 1;
+    lastT = t;
+    if (toneFrozen) return;
+    /* 背景随时间变红是可选效果，关闭时始终保持主题底色 */
+    var target = state.alert ? t : 0;
+    if (Math.abs(target - lastTone) < 0.0004) return;
+    lastTone = target;
+    var p = state.theme === 'dark' ? PAL.dark : PAL.light;
+    document.documentElement.style.setProperty('--bg', mixc(p.bg0, p.bg1, target));
+  }
+
+  /* ---------- 存储 ---------- */
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var o = JSON.parse(raw);
+      if (!o || typeof o !== 'object') return;
+      if (typeof o.start === 'string' && parseWall(o.start)) state.start = o.start;
+      if (typeof o.end === 'string' && parseWall(o.end)) state.end = o.end;
+      if (typeof o.tz === 'string' && validZone(o.tz)) state.tz = o.tz;
+      if (o.theme === 'dark' || o.theme === 'light') state.theme = o.theme;
+      if (o.themeMode === 'auto' || o.themeMode === 'manual') state.themeMode = o.themeMode;
+      if (Object.prototype.toString.call(o.schedule) === '[object Array]') {
+        var arr = [];
+        for (var i = 0; i < o.schedule.length; i++) {
+          var b = o.schedule[i];
+          if (b && typeof b.s === 'number' && typeof b.e === 'number' &&
+              b.s >= 0 && b.e <= 1440 && b.e - b.s >= 15) {
+            arr.push({ s: b.s, e: b.e });
+          }
+        }
+        arr.sort(function (x, y) { return x.s - y.s; });
+        state.schedule = arr;
+      }
+      if (typeof o.eyebrow === 'string') state.eyebrow = o.eyebrow;
+      if (typeof o.lang === 'string' && I18N[o.lang]) state.lang = o.lang;
+      if (o.alert === true) state.alert = true;
+      if (o.hideTop === false) state.hideTop = false;
+      if (o.hideFooter === false) state.hideFooter = false;
+      if (o.hideEyebrow === true) state.hideEyebrow = true;
+      if (o.forceEyebrow === true) state.forceEyebrow = true;
+      if (o.forceFooter === true) state.forceFooter = true;
+      if (typeof o.title === 'string') state.title = o.title;
+      if (typeof o.footer === 'string') state.footer = o.footer;
+    } catch (e) {}
+  }
+
+  /* 设置面板打开时，改动只留在内存里；点“保存”才真正落盘 */
+  function save() {
+    savedSnapshot = JSON.stringify(state);
+    if (!hasBackend()) {
+      try { localStorage.setItem(KEY, savedSnapshot); } catch (e) {}
+      return Promise.resolve();
+    }
+    return persistToFile();
+  }
+
+  /* ---------- 文件后端（Tauri） ---------- */
+
+  var TAURI = window.__TAURI__ || null;
+  var invoke = (TAURI && TAURI.core && TAURI.core.invoke) ? TAURI.core.invoke : null;
+  var currentTask = '';
+  var savedSnapshot = '';
+  var ctxTask = '';
+
+  function hasBackend() { return !!invoke; }
+
+  function todayName() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+
+  function sanitizeName(s) {
+    return String(s || '')
+      .replace(/[\\/:*?"<>|]/g, '-')
+      .replace(/[\r\n]+/g, ' ')
+      .replace(/^\s+|\s+$/g, '')
+      .slice(0, 40);
+  }
+
+  function defaultTask() {
+    return {
+      start: null, end: null, tz: 'local', theme: 'light', themeMode: 'manual',
+      schedule: [], alert: false, hideTop: true, hideFooter: true, hideEyebrow: false, forceEyebrow: false, forceFooter: false,
+      lang: lang,
+      eyebrow: PH.eyebrow, title: PH.title, footer: ''
+    };
+  }
+
+  function isDirty() { return JSON.stringify(state) !== savedSnapshot; }
+
+  async function uniqueName(base, ignore) {
+    var names = await invoke('list_tasks');
+    if (names.indexOf(base) < 0 || base === ignore) return base;
+    for (var i = 2; i < 200; i++) {
+      var n = base + '-' + i;
+      if (names.indexOf(n) < 0) return n;
+    }
+    return base + '-' + Date.now();
+  }
+
+  async function persistToFile() {
+    var task = currentTask;
+    var json = JSON.stringify(state, null, 2);
+    var want = (state.title && state.title !== PH.title) ? sanitizeName(state.title) : '';
+    if (want && want !== task) {
+      try {
+        var finalName = await uniqueName(want, task);
+        if (finalName !== task) {
+          await invoke('rename_task', { from: task, to: finalName });
+          if (currentTask === task) currentTask = finalName;
+          task = finalName;
+          try { localStorage.setItem('tminus.last', task); } catch (e) {}
+        }
+      } catch (e) {}
+    }
+    try {
+      await invoke('write_task', { name: task, content: json });
+      await refreshTaskList();
+    } catch (e) {}
+  }
+
+  function openTaskCtx(x, y, name) {
+    ctxTask = name;
+    var m = $('ctxMenu');
+    var z = zoomFactor();
+    var vw = document.documentElement.clientWidth / z;
+    var vh = document.documentElement.clientHeight / z;
+    m.hidden = false;
+    var mw = m.offsetWidth || 130;
+    var mh = m.offsetHeight || 120;
+    var left = Math.max(8, Math.min(x / z, vw - mw - 8));
+    var top = Math.max(8, Math.min(y / z, vh - mh - 8));
+    m.style.left = left + 'px';
+    m.style.top = top + 'px';
+  }
+
+  async function refreshTaskList() {
+    if (!hasBackend()) return;
+    var names = [];
+    try { names = await invoke('list_tasks'); } catch (e) { return; }
+    var box = $('taskItems');
+    box.textContent = '';
+    for (var i = 0; i < names.length; i++) {
+      (function (n) {
+        var row = document.createElement('div');
+        row.className = 'task-row';
+
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'task-item' + (n === currentTask ? ' is-on' : '');
+        b.textContent = n;
+        b.title = n;
+        b.addEventListener('click', function () { switchTask(n); });
+        b.addEventListener('contextmenu', function (ev) {
+          ev.preventDefault();
+          var rr = b.getBoundingClientRect();
+          openTaskCtx(rr.left, rr.bottom + 4, n);
+        });
+
+        var more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'task-more';
+        more.textContent = '\u22EF';
+        more.title = n;
+        more.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          var r = more.getBoundingClientRect();
+          openTaskCtx(r.left, r.bottom + 4, n);
+        });
+
+        row.appendChild(b);
+        row.appendChild(more);
+        box.appendChild(row);
+      })(names[i]);
+    }
+  }
+
+  async function loadTask(name) {
+    var txt = await invoke('read_task', { name: name });
+    applyConfig(JSON.parse(txt));
+    currentTask = name;
+    savedSnapshot = JSON.stringify(state);
+    try { localStorage.setItem('tminus.last', name); } catch (e) {}
+    refreshAll();
+    await refreshTaskList();
+  }
+
+  async function switchTask(name) {
+    if (!name || name === currentTask) return;
+    if (isDirty()) await save();
+    try { await loadTask(name); } catch (e) {}
+  }
+
+  async function createTask(name) {
+    var d = defaultTask();
+    await invoke('write_task', { name: name, content: JSON.stringify(d, null, 2) });
+    currentTask = name;
+    applyConfig(d);
+    savedSnapshot = JSON.stringify(state);
+    try { localStorage.setItem('tminus.last', name); } catch (e) {}
+    refreshAll();
+    await refreshTaskList();
+  }
+
+  async function bootTasks() {
+    var names = await invoke('list_tasks');
+    if (!names.length) {
+      await invoke('write_task', { name: todayName(), content: JSON.stringify(defaultTask(), null, 2) });
+      names = await invoke('list_tasks');
+    }
+    var last = '';
+    try { last = localStorage.getItem('tminus.last') || ''; } catch (e) {}
+    var pick = names.indexOf(last) >= 0 ? last : names[0];
+    await loadTask(pick);
+  }
+
+  function refreshAll() {
+    lastDark = null;
+    applyLang();
+    applyTheme();
+    renderThemeUI();
+    syncInputs();
+    renderText();
+    renderMode();
+    tick();
+  }
+
+  /* ---------- 区间计算（带缓存） ---------- */
+
+  var rangeKey = '', rangeStart = 0, rangeEnd = 0;
+
+  function computeRange(now) {
+    var tz = tzId();
+    var key = tz + '|' + state.start + '|' + state.end;
+    if (key !== rangeKey) {
+      var s = wallToTs(state.start, tz);
+      var e = wallToTs(state.end, tz);
+      rangeStart = s === null ? now : s;
+      rangeEnd = e === null ? now : e;
+      rangeKey = key;
+    }
+    return { start: rangeStart, end: rangeEnd };
+  }
+
+  /* ---------- 渲染 ---------- */
+
+  var elD = $('d'), elH = $('h'), elMi = $('mi'), elS = $('s');
+  var elClock = $('clock'), elZone = $('zone'), elHint = $('hint');
+  var elRing = $('ring'), elRingPct = $('ringPct'), elRingCap = $('ringCap');
+  var elBarFill = $('barFill'), elBarPct = $('barPct');
+  var elStart = $('startTxt'), elEnd = $('endTxt');
+  var elTotal = $('totalTxt'), elPass = $('passTxt');
+  var elPreBox = $('preBox'), elPreNums = $('preNums'), elPreCap = $('preCap');
+
+  var R = 88, C = 2 * Math.PI * R;
+  elRing.style.strokeDasharray = C.toFixed(2);
+
+  var lastClock = '', lastZone = '', lastParts = '', lastPct = '', lastMeta = '', over = false;
+  var preState = false, lastRingPt = '', preText = '';
+  var lastPre = '';
+
+  function tick() {
+    var now = Date.now();
+    var tz = tzId();
+
+    /* 时钟 */
+    var p = partsIn(now, tz);
+    var cs = stampSec(p);
+    if (cs !== lastClock) { elClock.textContent = cs; lastClock = cs; }
+
+    var zs = zoneName(tz) + ' · ' + offsetLabel(offsetMs(tz, now));
+    if (zs !== lastZone) { elZone.textContent = zs; lastZone = zs; }
+
+    /* 按时段自动切换主题 */
+    autoCheck(p);
+    if (editingAuto) updateNowLine();
+
+    /* 未设置时间范围：只走时钟 */
+    if (!hasRange()) return;
+
+    var r = computeRange(now);
+
+    /* 倒计时 */
+    var left = r.end - now;
+    if (left < 0) left = 0;
+    var secs = Math.ceil(left / 1000);
+    var dd = Math.floor(secs / 86400);
+    var hh = Math.floor((secs % 86400) / 3600);
+    var mm = Math.floor((secs % 3600) / 60);
+    var ss = secs % 60;
+    var pk = dd + '/' + hh + '/' + mm + '/' + ss;
+    if (pk !== lastParts) {
+      elD.textContent = pad(dd);
+      elH.textContent = pad(hh);
+      elMi.textContent = pad(mm);
+      elS.textContent = pad(ss);
+      lastParts = pk;
+    }
+
+    /* 进度：剩余 ÷ 全程 */
+    var total = r.end - r.start;
+    var f = total > 0 ? left / total : 0;
+    if (f < 0) f = 0; else if (f > 1) f = 1;
+    var pct = f * 100;
+    var prog = 100 - pct;
+
+    /* 条形是进度条：从左往右填到 100% */
+    elBarFill.style.width = prog.toFixed(3) + '%';
+    elRing.style.strokeDashoffset = (C * (1 - f)).toFixed(2);
+
+    /* 底色随剩余比例推进：白 → 亮红；文字始终黑色 */
+    tone(1 - f);
+
+    var pt = (prog >= 99.95 || prog < 0.05) ? prog.toFixed(0) : prog.toFixed(1);
+    var rpt = (pct >= 99.95 || pct < 0.05) ? pct.toFixed(0) : pct.toFixed(1);
+
+    if (pt !== lastPct) {
+      elBarPct.textContent = pt + '%';
+      lastPct = pt;
+    }
+
+    /* 圆盘中心：未到开始时间显示预备期，到点后显示剩余百分比 */
+    if (now < r.start) {
+      if (!preState || preText !== t('prePeriod')) {
+        preState = true;
+        preText = t('prePeriod');
+        elRingPct.classList.add('is-pre');
+        elRingPct.textContent = preText;
+        elRingCap.hidden = true;
+      }
+
+      /* 右侧：距离起点的小倒计时，到点即归零并隐藏 */
+      var toStart = r.start - now;
+      if (toStart < 0) toStart = 0;
+      var psecAll = Math.floor(toStart / 1000);
+      var pd = Math.floor(psecAll / 86400);
+      var ph2 = Math.floor(psecAll % 86400 / 3600);
+      var pm2 = Math.floor(psecAll % 3600 / 60);
+      var ps2 = psecAll % 60;
+      var pkey = pd + ':' + ph2 + ':' + pm2 + ':' + ps2;
+      if (pkey !== lastPre) {
+        elPreNums.innerHTML =
+          pd + '<span>' + t('day') + '</span>' +
+          pad(ph2) + '<span>' + t('hour') + '</span>' +
+          pad(pm2) + '<span>' + t('minute') + '</span>' +
+          pad(ps2) + '<span>' + t('second') + '</span>';
+        lastPre = pkey;
+      }
+      if (elPreBox.hidden) elPreBox.hidden = false;
+    } else {
+      if (!elPreBox.hidden) elPreBox.hidden = true;
+      lastPre = '';
+      if (preState) {
+        preState = false;
+        preText = '';
+        lastRingPt = '';
+        elRingPct.classList.remove('is-pre');
+        elRingCap.hidden = false;
+      }
+      if (rpt !== lastRingPt) {
+        elRingPct.innerHTML = rpt + '<span>%</span>';
+        lastRingPt = rpt;
+      }
+    }
+
+    /* 元信息 */
+    if (!over) {
+      var mk = r.start + '|' + r.end + '|' + Math.floor(now / 1000) + '|' + lang;
+      if (mk !== lastMeta) {
+        lastMeta = mk;
+        var endP = partsIn(r.end, tz);
+        elStart.textContent = stamp(partsIn(r.start, tz));
+        elEnd.textContent = stamp(endP);
+        elTotal.textContent = (total / DAY).toFixed(1) + ' ' + t('day');
+        var passedMs = now - r.start;
+        if (passedMs < 0) passedMs = 0;
+        elPass.textContent = (passedMs / DAY).toFixed(1) + ' ' + t('day');
+        elHint.textContent = t('deadline') + ' ' + stamp(endP) + ' (' + weekOf(endP) + ')';
+      }
+    }
+
+    if (left <= 0 && !over) {
+      over = true;
+      showModal();
+    }
+  }
+
+  function loop() {
+    tick();
+    requestAnimationFrame(loop);
+  }
+
+  /* ---------- 设置面板 ---------- */
+
+  var elSettings = $('settings'), elGear = $('gearBtn'), elResetLink = $('resetBtn');
+  var elStartIn = $('startIn'), elEndIn = $('endIn'), elTzIn = $('tzIn');
+  var elEyebrow = $('eyebrow'), elTitle = $('title'), elFooter = $('footer');
+  var elEyebrowIn = $('eyebrowIn'), elTitleIn = $('titleIn'), elFooterIn = $('footerIn');
+  var elPlaceholder = $('placeholder'), elCountdown = $('countdown'), elPanel = $('panel');
+  var elOverlay = $('overlay');
+  var elModalMask = $('modalMask'), elModalClose = $('modalClose'), elModalTarget = $('modalTarget');
+  var elThemeSeg = $('themeSeg');
+  var elAutoEntry = $('autoEntry'), elAutoEditor = $('autoEditor');
+  var elTl = $('tl'), elTlBlocks = $('tlBlocks'), elTlNow = $('tlNow');
+  var elTlScale = $('tlScale'), elTlLegend = $('tlLegend');
+  var elConfirmMask = $('confirmMask'), elConfirmOk = $('confirmOk'), elConfirmCancel = $('confirmCancel');
+
+  function buildZones() {
+    var cur = elTzIn.value || state.tz;
+    var frag = document.createDocumentFragment();
+    var op = document.createElement('option');
+    op.value = 'local';
+    op.textContent = t('tzLocal');
+    frag.appendChild(op);
+    for (var i = 0; i < ZONES.length; i++) {
+      var o = document.createElement('option');
+      o.value = ZONES[i];
+      o.textContent = zoneName(ZONES[i]);
+      frag.appendChild(o);
+    }
+    elTzIn.innerHTML = '';
+    elTzIn.appendChild(frag);
+    elTzIn.value = cur;
+  }
+
+  function hasRange() { return !!(state.start && state.end); }
+
+  function syncInputs() {
+    elStartIn.value = state.start || '';
+    elEndIn.value = state.end || '';
+    elEyebrowIn.value = state.eyebrow;
+    elTitleIn.value = state.title;
+    elFooterIn.value = state.footer;
+    buildZones();
+    elTzIn.value = state.tz;
+  }
+
+  function renderText() {
+    elEyebrow.textContent = state.eyebrow;
+    elEyebrow.hidden = !state.eyebrow;
+    elTitle.textContent = state.title;
+    elTitle.hidden = !state.title;
+    elFooter.textContent = state.footer;
+    elFooter.hidden = !state.footer;
+    document.title = (state.title && state.title !== PH.title) ? state.title : t('pageTitle');
+  }
+
+  /* ---------- 语言 ---------- */
+
+  var langReady = false;
+
+  function q(sel) { return document.querySelector(sel); }
+  function qa(sel) { return document.querySelectorAll(sel); }
+
+  function applyLang() {
+    lang = state.lang || 'zh-CN';
+    if (!I18N[lang]) lang = 'zh-CN';
+    document.documentElement.lang = lang;
+
+    var firstRun = !langReady;
+    langReady = true;
+
+    var oldE = PH.eyebrow, oldT = PH.title, oldF = PH.footer;
+    PH.eyebrow = t('phE');
+    PH.title = t('phT');
+    PH.footer = '';
+
+    if (state.eyebrow === oldE || (firstRun && !state.eyebrow)) state.eyebrow = PH.eyebrow;
+    if (state.title === oldT || (firstRun && !state.title)) state.title = PH.title;
+    if (state.footer === oldF || state.footer === t('phF')) state.footer = '';
+
+    if (elEyebrowIn.value === oldE || (firstRun && !elEyebrowIn.value)) elEyebrowIn.value = PH.eyebrow;
+    if (elTitleIn.value === oldT || (firstRun && !elTitleIn.value)) elTitleIn.value = PH.title;
+    elFooterIn.placeholder = t('phF');
+    if (elFooterIn.value === oldF || elFooterIn.value === t('phF')) elFooterIn.value = '';
+
+    /* 顶栏与设置 */
+    $('exportBtn').textContent = t('exp');
+    $('importBtn').textContent = t('imp');
+    $('gearBtn').textContent = t('settings');
+    $('resetBtn').textContent = t('reset');
+    $('langBtn').setAttribute('aria-label', t('language'));
+
+    q('#settings .field > label').textContent = t('appearance');
+    elThemeSeg.querySelector('[data-theme="light"]').textContent = t('light');
+    elThemeSeg.querySelector('[data-theme="dark"]').textContent = t('dark');
+    elThemeSeg.querySelector('[data-theme="auto"]').textContent = t('auto');
+
+    $('addBlock').textContent = t('addSlot');
+    $('presetNight').textContent = t('nightPreset');
+    $('autoCancel').textContent = t('close');
+    $('autoSave').textContent = t('save');
+    q('#autoEditor .kbd').textContent = t('rclick');
+    q('#autoEditor .tl-hint b').textContent = t('deleteHint');
+    q('#autoEditor .tl-hint-2').textContent = t('dragHint');
+
+    q('label[for="startIn"]').textContent = t('startTime');
+    q('label[for="endIn"]').textContent = t('endTime');
+    q('label[for="tzIn"]').textContent = t('timezone');
+    q('label[for="eyebrowIn"]').textContent = t('smallTitle');
+    q('label[for="titleIn"]').textContent = t('bigTitle');
+    q('label[for="footerIn"]').textContent = t('footerLabel');
+
+
+    q('#settings .note').textContent = t('note');
+    $('author').textContent = t('author') + ' · FurySpace21';
+
+    $('tasklistHead').textContent = t('tasks');
+    $('newTaskBtn').textContent = '＋ ' + t('newTask');
+    $('openDirBtn').textContent = t('openDir');
+    $('ctxRename').textContent = t('rename');
+    $('ctxDup').textContent = t('dup');
+    $('ctxDel').textContent = t('del');
+    refreshTaskList();
+
+    /* 倒计时与进度 */
+    var units = qa('.countdown .unit .lbl');
+    var ukeys = ['day', 'hour', 'minute', 'second'];
+    for (var i = 0; i < units.length; i++) units[i].textContent = t(ukeys[i]);
+    elRingCap.textContent = t('remaining');
+    q('.bar-head > span').textContent = t('progress');
+    $('scaleSel').setAttribute('aria-label', t('scale'));
+    $('scaleSel').setAttribute('title', t('scale'));
+    $('alertLabel').textContent = t('alertBg');
+    $('fsLabel').textContent = t('fullscreen');
+    $('fsHint').textContent = t('fullHint');
+    $('alertSwitch').setAttribute('aria-checked', state.alert ? 'true' : 'false');
+    $('settingsClose').setAttribute('aria-label', t('close'));
+    $('preCap').textContent = t('toStart');
+    $('sectLookTitle').textContent = t('appearance');
+    $('sectTimeTitle').textContent = t('sectTime');
+    $('sectTextTitle').textContent = t('sectText');
+    $('sectLookReset').textContent = t('resetSect');
+    $('sectTimeReset').textContent = t('resetSect');
+    $('sectTextReset').textContent = t('resetSect');
+    $('hideTopLbl').textContent = t('hideTopLbl');
+    $('hideFooterLbl').textContent = t('hideFooterLbl');
+    $('hideEyebrowLbl').textContent = t('hideEyebrowLbl');
+    $('hideTopSwitch').setAttribute('aria-checked', state.hideTop ? 'true' : 'false');
+    $('hideFooterSwitch').setAttribute('aria-checked', state.hideFooter ? 'true' : 'false');
+    $('hideEyebrowSwitch').setAttribute('aria-checked', state.hideEyebrow ? 'true' : 'false');
+    $('forceEyebrowSwitch').setAttribute('aria-checked', state.forceEyebrow ? 'true' : 'false');
+    $('forceFooterSwitch').setAttribute('aria-checked', state.forceFooter ? 'true' : 'false');
+    $('hideColAuto').textContent = t('hideColAuto');
+    $('hideColAlways').textContent = t('hideColAlways');
+    applyAutoHide();
+    var dts = qa('.meta dt');
+    var mkeys = ['start', 'end', 'span', 'elapsed'];
+    for (var j = 0; j < dts.length; j++) dts[j].textContent = t(mkeys[j]);
+
+    /* 弹窗 */
+    q('#overlay .overlay-text').textContent = t('cleaning');
+    $('modalClose').setAttribute('aria-label', t('close'));
+    $('modalTitle').textContent = t('zeroTitle');
+    q('#modalMask .modal-sub').textContent = t('zeroBody');
+    var rows = qa('#modalMask .modal-rows span');
+    rows[0].textContent = t('target');
+    rows[1].textContent = t('status');
+    q('#modalMask .modal-rows b.alert').textContent = t('ended');
+
+    $('confirmTitle').textContent = t('confirmTitle');
+    q('#confirmMask .modal-sub').textContent = t('confirmBody');
+    $('confirmCancel').textContent = t('cancel');
+    $('confirmOk').textContent = t('reset');
+
+    $('exportTitle').textContent = t('expTitle');
+    q('#exportMask .modal-sub').textContent = t('expBody');
+    q('#exportMask .modal-field span').textContent = t('expName');
+    $('exportCancel').textContent = t('cancel');
+    $('exportOk').textContent = t('exp');
+
+    renderText();
+    syncInputs();
+    renderThemeUI();
+    if (editingAuto) renderTimeline();
+  }
+
+  function buildLangMenu() {
+    var html = '';
+    for (var i = 0; i < LANGS.length; i++) {
+      html += '<button type="button" class="lang-item" data-lang="' + LANGS[i][0] + '">' + LANGS[i][1] + '</button>';
+    }
+    $('langMenu').innerHTML = html;
+    markLangMenu();
+  }
+
+  function markLangMenu() {
+    var items = qa('#langMenu .lang-item');
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.toggle('is-on', items[i].getAttribute('data-lang') === lang);
+    }
+  }
+
+  function setLang(l) {
+    if (!I18N[l] || l === lang) { $('langMenu').hidden = true; return; }
+    state.lang = l;
+    applyLang();
+    markLangMenu();
+    save();
+    $('langMenu').hidden = true;
+    if (hasRange()) tick(); else tone(lastT);
+  }
+
+  var lastDark = null, themeTimer = null;
+
+  /* 切换时先把内容整体藏起来，只让底色慢慢渐变；渐变结束再把新配色的内容放出来 */
+  function syncThemeClass() {
+    var dark = state.theme === 'dark';
+    if (lastDark === dark) return;
+    var first = lastDark === null;
+    lastDark = dark;
+    var root = document.documentElement;
+
+    if (first) {
+      root.classList.toggle('bg-dark', dark);
+      root.classList.toggle('ink-dark', dark);
+      return;
+    }
+
+    root.classList.add('switching');
+    void root.offsetWidth;
+
+    root.classList.toggle('bg-dark', dark);
+    root.classList.toggle('ink-dark', dark);
+
+    /* 立刻把底色目标设成新主题的值，然后冻结后续更新，保证这 2 秒只渐变一次 */
+    lastTone = -1;
+    toneFrozen = false;
+    tone(lastT);
+    toneFrozen = true;
+
+    if (themeTimer) window.clearTimeout(themeTimer);
+    themeTimer = window.setTimeout(function () {
+      root.classList.remove('switching');
+      toneFrozen = false;
+      lastTone = -1;
+      themeTimer = null;
+      revealOnce(document.querySelector('.wrap'), 380);
+    }, 2000);
+  }
+
+  function applyTheme() {
+    var dark = state.theme === 'dark';
+    syncThemeClass();
+    var active = state.themeMode === 'auto' ? 'auto' : (dark ? 'dark' : 'light');
+    var btns = elThemeSeg.getElementsByTagName('button');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.toggle('is-on', btns[i].getAttribute('data-theme') === active);
+    }
+    lastTone = -1;
+  }
+
+  /* 随系统时钟切换时的主题变更 */
+  function applyThemeValue(t) {
+    if (state.theme === t) return;
+    state.theme = t;
+    syncThemeClass();
+    lastTone = -1;
+    tone(lastT);
+  }
+
+  function chooseMode(m) {
+    if (m === 'auto') {
+      if (!state.schedule.length) { openAutoEditor(); return; }
+      state.themeMode = 'auto';
+      var p = partsIn(Date.now(), tzId());
+      state.theme = isDarkAt(minutesOf(p)) ? 'dark' : 'light';
+    } else {
+      state.themeMode = 'manual';
+      state.theme = m === 'dark' ? 'dark' : 'light';
+    }
+    applyTheme();
+    save();
+    tone(lastT);
+  }
+
+  /* ---------- 时段：24 小时刻度条 ---------- */
+
+  var MIN_LEN = 30, GAP = 0, SNAP = 15;
+  var editingAuto = false;
+  var draft = [];
+  var drag = null;
+
+  function cloneSchedule(a) {
+    var out = [];
+    for (var i = 0; i < a.length; i++) out.push({ s: a[i].s, e: a[i].e });
+    return out;
+  }
+
+  function minutesOf(p) { return p.h * 60 + p.mi; }
+
+  function isDarkAt(mins, sch) {
+    sch = sch || state.schedule;
+    for (var i = 0; i < sch.length; i++) {
+      if (mins >= sch[i].s && mins < sch[i].e) return true;
+    }
+    return false;
+  }
+
+  function autoCheck(p) {
+    if (state.themeMode !== 'auto' || !state.schedule.length) return;
+    applyThemeValue(isDarkAt(minutesOf(p)) ? 'dark' : 'light');
+  }
+
+  function fmtMin(m) {
+    m = Math.round(m);
+    if (m >= 1440) return '24:00';
+    return pad(Math.floor(m / 60)) + ':' + pad(m % 60);
+  }
+
+  function snap15(m) { return Math.round(m / SNAP) * SNAP; }
+
+  function renderThemeUI() {
+    elAutoEntry.hidden = editingAuto;
+    elAutoEditor.hidden = !editingAuto;
+    if (!editingAuto) {
+      elAutoEntry.textContent = state.schedule.length
+        ? t('scheduleN').replace('{n}', state.schedule.length)
+        : t('schedule0');
+    }
+  }
+
+  (function buildScale() {
+    var ticks = '';
+    for (var h = 0; h <= 24; h++) {
+      ticks += '<span class="tl-tick' + (h % 6 === 0 ? ' major' : '') +
+        '" style="left:' + (h / 24 * 100) + '%"></span>';
+    }
+    elTl.insertAdjacentHTML('afterbegin', ticks);
+
+    var labels = '';
+    for (var h2 = 0; h2 <= 24; h2 += 6) {
+      var big = (h2 === 0 || h2 === 12 || h2 === 24) ? ' big' : '';
+      var style = h2 === 0 ? 'left:0;transform:none'
+        : (h2 === 24 ? 'right:0;transform:none'
+          : 'left:' + (h2 / 24 * 100) + '%;transform:translateX(-50%)');
+      labels += '<span class="' + big.trim() + '" style="' + style + '">' + h2 + '</span>';
+    }
+    elTlScale.innerHTML = labels;
+  })();
+
+  function updateNowLine() {
+    if (!editingAuto) return;
+    var p = partsIn(Date.now(), tzId());
+    elTlNow.style.left = (minutesOf(p) / 1440 * 100) + '%';
+  }
+
+  function fitLabel(el, b, w) {
+    var lbl = el.querySelector('.tl-label');
+    if (!lbl) return;
+    var px = (b.e - b.s) / 1440 * w;
+    if (px >= 58) {
+      lbl.className = 'tl-label';
+      lbl.innerHTML = fmtMin(b.s) + '–' + fmtMin(b.e);
+      lbl.style.display = '';
+    } else if (px >= 36) {
+      lbl.className = 'tl-label two';
+      lbl.innerHTML = fmtMin(b.s) + '<br>' + fmtMin(b.e);
+      lbl.style.display = '';
+    } else {
+      lbl.style.display = 'none';
+    }
+  }
+
+  /* CSS zoom 下 getBoundingClientRect 返回缩放后的值，需换算回布局像素 */
+  function zoomFactor() {
+    var cs = window.getComputedStyle(document.documentElement);
+    var z = parseFloat(cs.getPropertyValue('--z'));
+    if (!(isFinite(z) && z > 0)) z = parseFloat(cs.zoom);
+    return (isFinite(z) && z > 0) ? z : 1;
+  }
+
+  function layoutWidth(el) {
+    if (!el) return 0;
+    return (el.getBoundingClientRect().width || 0) / zoomFactor();
+  }
+
+  function updateLegend() {
+    var W = layoutWidth(elTl);
+    var small = [];
+    for (var i = 0; i < draft.length; i++) {
+      var b = draft[i];
+      if ((b.e - b.s) / 1440 * W < 36) small.push(b);
+    }
+
+    elTlLegend.innerHTML = '';
+    if (!small.length || !W) {
+      elTlLegend.hidden = true;
+      elTlLegend.style.height = '0px';
+      return;
+    }
+    elTlLegend.hidden = false;
+
+    var rowH = 20, gapX = 8;
+    var rowRight = [];
+    var items = [];
+
+    for (var k = 0; k < small.length; k++) {
+      var s = small[k];
+      var chip = document.createElement('span');
+      chip.className = 'tl-chip';
+      chip.textContent = fmtMin(s.s) + '–' + fmtMin(s.e);
+      elTlLegend.appendChild(chip);
+
+      var cw = chip.offsetWidth;
+      var cx = (s.s + s.e) / 2 / 1440 * W;
+      var left = Math.min(Math.max(cx - cw / 2, 0), Math.max(W - cw, 0));
+      var row = 0;
+      while (true) {
+        if (rowRight[row] === undefined) { rowRight[row] = left + cw; break; }
+        if (left >= rowRight[row] + gapX) { rowRight[row] = left + cw; break; }
+        row++;
+      }
+      chip.style.left = left + 'px';
+      chip.style.top = (row * rowH) + 'px';
+      items.push({ cx: cx, left: left, w: cw, top: row * rowH });
+    }
+
+    var legendH = rowRight.length * rowH;
+    elTlLegend.style.height = legendH + 'px';
+
+    var off = (elTlLegend.getBoundingClientRect().top - elTl.getBoundingClientRect().bottom) / zoomFactor();
+    if (off < 0) off = 0;
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'tl-links');
+    svg.setAttribute('width', W);
+    svg.setAttribute('height', legendH + off);
+    svg.style.top = (-off) + 'px';
+    svg.style.height = (legendH + off) + 'px';
+
+    for (var j = 0; j < items.length; j++) {
+      var it = items[j];
+      var y2 = off + it.top - 3;
+      var x2 = it.left + it.w / 2;
+      var line = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+      line.setAttribute('points', it.cx + ',0 ' + it.cx + ',' + (y2 - 5) + ' ' + x2 + ',' + y2);
+      line.setAttribute('fill', 'none');
+      svg.appendChild(line);
+    }
+    elTlLegend.appendChild(svg);
+  }
+
+  function renderTimeline() {
+    var w = layoutWidth(elTl);
+    var html = '';
+    for (var i = 0; i < draft.length; i++) {
+      var b = draft[i];
+      html += '<div class="tl-block" data-i="' + i + '" style="left:' + (b.s / 1440 * 100) +
+        '%;width:' + ((b.e - b.s) / 1440 * 100) + '%">' +
+        '<span class="tl-label"></span>' +
+        '<span class="tl-handle l" data-edge="l"></span>' +
+        '<span class="tl-handle r" data-edge="r"></span>' +
+        '</div>';
+    }
+    if (!draft.length) {
+      html = '<div class="tl-empty">' + t('emptyTl') + '</div>';
+    }
+
+    elTlBlocks.innerHTML = html;
+
+    var blocks = elTlBlocks.getElementsByClassName('tl-block');
+    for (var k = 0; k < blocks.length; k++) {
+      fitLabel(blocks[k], draft[k], w);
+    }
+    updateLegend();
+
+    updateNowLine();
+  }
+
+  function openAutoEditor() {
+    editingAuto = true;
+    draft = cloneSchedule(state.schedule);
+    renderThemeUI();
+    renderTimeline();
+  }
+
+  function closeAutoEditor() {
+    editingAuto = false;
+    drag = null;
+    renderThemeUI();
+  }
+
+  function saveAuto() {
+    draft.sort(function (a, b) { return a.s - b.s; });
+    state.schedule = cloneSchedule(draft);
+    state.themeMode = state.schedule.length ? 'auto' : 'manual';
+    if (state.themeMode === 'auto') {
+      var p = partsIn(Date.now(), tzId());
+      state.theme = isDarkAt(minutesOf(p)) ? 'dark' : 'light';
+    }
+    applyTheme();
+    save();
+    editingAuto = false;
+    renderThemeUI();
+    if (hasRange()) tick(); else tone(0);
+  }
+
+  function freeSlot(len) {
+    var starts = [22 * 60];
+    for (var c = 0; c + len <= 1440; c += 30) starts.push(c);
+    for (var k = 0; k < starts.length; k++) {
+      var s0 = starts[k];
+      if (s0 + len > 1440) continue;
+      var ok = true;
+      for (var i = 0; i < draft.length; i++) {
+        var b = draft[i];
+        if (s0 < b.e + GAP && s0 + len > b.s - GAP) { ok = false; break; }
+      }
+      if (ok) return s0;
+    }
+    return null;
+  }
+
+  function addBlock() {
+    var s0 = freeSlot(60);
+    if (s0 === null) return;
+    draft.push({ s: s0, e: s0 + 60 });
+    draft.sort(function (a, b) { return a.s - b.s; });
+    renderTimeline();
+  }
+
+  function presetNight() {
+    draft = [{ s: 0, e: 7 * 60 }, { s: 22 * 60, e: 1440 }];
+    renderTimeline();
+  }
+
+  function onDragMove(ev) {
+    if (!drag) return;
+    var i = drag.i, b = draft[i];
+    if (!b) return;
+    var dm = (ev.clientX - drag.x0) / drag.w * 1440;
+    var lo = i > 0 ? draft[i - 1].e + GAP : 0;
+    var hi = i < draft.length - 1 ? draft[i + 1].s - GAP : 1440;
+
+    if (drag.mode === 'l') {
+      if (b.e - MIN_LEN < lo) return;
+      var ns = snap15(drag.s0 + dm);
+      if (ns < lo) ns = lo;
+      if (ns > b.e - MIN_LEN) ns = b.e - MIN_LEN;
+      b.s = ns;
+    } else if (drag.mode === 'r') {
+      if (b.s + MIN_LEN > hi) return;
+      var ne = snap15(drag.e0 + dm);
+      if (ne > hi) ne = hi;
+      if (ne < b.s + MIN_LEN) ne = b.s + MIN_LEN;
+      b.e = ne;
+    } else {
+      var len = drag.e0 - drag.s0;
+      if (hi - len < lo) return;
+      var ns2 = snap15(drag.s0 + dm);
+      if (ns2 < lo) ns2 = lo;
+      if (ns2 > hi - len) ns2 = hi - len;
+      if (ns2 + len > 1440) ns2 = 1440 - len;
+      if (ns2 < 0) ns2 = 0;
+      b.s = ns2;
+      b.e = ns2 + len;
+    }
+
+    drag.el.style.left = (b.s / 1440 * 100) + '%';
+    drag.el.style.width = ((b.e - b.s) / 1440 * 100) + '%';
+    fitLabel(drag.el, b, drag.w);
+    updateLegend();
+  }
+
+  function onDragUp() {
+    window.removeEventListener('pointermove', onDragMove);
+    window.removeEventListener('pointerup', onDragUp);
+    window.removeEventListener('pointercancel', onDragUp);
+    drag = null;
+    draft.sort(function (a, b) { return a.s - b.s; });
+    renderTimeline();
+  }
+
+  elTlBlocks.addEventListener('pointerdown', function (ev) {
+    var block = ev.target.closest ? ev.target.closest('.tl-block') : null;
+    if (!block) return;
+    var i = +block.getAttribute('data-i');
+    if (!draft[i]) return;
+    var handle = ev.target.closest('.tl-handle');
+    drag = {
+      i: i,
+      el: block,
+      mode: handle ? (handle.getAttribute('data-edge') === 'l' ? 'l' : 'r') : 'move',
+      x0: ev.clientX,
+      s0: draft[i].s,
+      e0: draft[i].e,
+      w: elTl.getBoundingClientRect().width || 1
+    };
+    ev.preventDefault();
+    window.addEventListener('pointermove', onDragMove);
+    window.addEventListener('pointerup', onDragUp);
+    window.addEventListener('pointercancel', onDragUp);
+  });
+
+  elTlBlocks.addEventListener('contextmenu', function (ev) {
+    var block = ev.target.closest ? ev.target.closest('.tl-block') : null;
+    if (!block) return;
+    ev.preventDefault();
+    var i = +block.getAttribute('data-i');
+    if (draft[i]) { draft.splice(i, 1); renderTimeline(); }
+  });
+
+  elAutoEntry.addEventListener('click', openAutoEditor);
+  $('addBlock').addEventListener('click', addBlock);
+  $('presetNight').addEventListener('click', presetNight);
+  $('autoCancel').addEventListener('click', closeAutoEditor);
+  $('autoSave').addEventListener('click', saveAuto);
+
+  function renderMode() {
+    var has = hasRange();
+    elPlaceholder.hidden = has;
+    elCountdown.hidden = !has;
+    elHint.hidden = !has;
+    elPanel.hidden = !has;
+    over = false;
+    lastParts = lastPct = lastMeta = '';
+    if (!has) {
+      elHint.textContent = '';
+      hideModal();
+      tone(0);
+    }
+  }
+
+  var settingsTimer = null;
+
+  function openSettings() {
+    syncInputs();
+    renderThemeUI();
+    elGear.hidden = true;
+    elResetLink.hidden = true;
+    if (settingsTimer) { window.clearTimeout(settingsTimer); settingsTimer = null; }
+
+    var el = elSettings;
+    el.style.transition = 'none';
+    el.style.height = '0px';
+    el.style.opacity = '0';
+    el.hidden = false;
+
+    var h = el.scrollHeight;
+    void el.offsetHeight;
+    el.style.transition = 'height .24s cubic-bezier(.2,.7,.3,1), opacity .2s ease';
+    el.style.height = h + 'px';
+    el.style.opacity = '1';
+
+    revealOnce(el.querySelector('.settings-main'), 340);
+
+    settingsTimer = window.setTimeout(function () {
+      el.style.transition = '';
+      el.style.height = '';
+      el.style.opacity = '';
+      settingsTimer = null;
+      updateNarrow();
+      showBars();
+    }, 300);
+  }
+
+
+  function closeSettings() {
+    var el = elSettings;
+    if (settingsTimer) { window.clearTimeout(settingsTimer); settingsTimer = null; }
+
+    var h = el.scrollHeight;
+    el.style.transition = 'none';
+    el.style.height = h + 'px';
+    el.style.opacity = '1';
+    void el.offsetHeight;
+    el.style.transition = 'height .22s ease, opacity .18s ease';
+    el.style.height = '0px';
+    el.style.opacity = '0';
+
+    editingAuto = false;
+    drag = null;
+
+    settingsTimer = window.setTimeout(function () {
+      el.hidden = true;
+      el.style.transition = '';
+      el.style.height = '';
+      el.style.opacity = '';
+      elGear.hidden = false;
+      elResetLink.hidden = false;
+      settingsTimer = null;
+      updateNarrow();
+      syncBars();
+    }, 240);
+  }
+
+  /* 改动即保存：输入合法就落盘，非法值先不写 */
+  var liveTimer = null;
+
+  function applyLive() {
+    var s0 = elStartIn.value, e0 = elEndIn.value, z0 = elTzIn.value;
+
+    if (validZone(z0) && z0 !== state.tz) { state.tz = z0; rangeKey = ''; }
+
+    var okRange = false;
+    if (s0 && e0 && parseWall(s0) && parseWall(e0)) {
+      var tz0 = resolveZone(z0);
+      var st = wallToTs(s0, tz0), en = wallToTs(e0, tz0);
+      okRange = (st !== null && en !== null && en > st);
+    }
+    if (okRange) {
+      state.start = s0;
+      state.end = e0;
+    } else if (!s0 && !e0) {
+      state.start = null;
+      state.end = null;
+    }
+
+    state.eyebrow = elEyebrowIn.value.trim();
+    state.title = elTitleIn.value.trim();
+    state.footer = elFooterIn.value.replace(/\r\n/g, '\n').trim();
+
+    rangeKey = '';
+    renderText();
+    renderMode();
+    tick();
+    save();
+  }
+
+  function scheduleLive() {
+    if (liveTimer) window.clearTimeout(liveTimer);
+    liveTimer = window.setTimeout(function () {
+      liveTimer = null;
+      applyLive();
+    }, 400);
+  }
+
+  var resetting = false;
+
+  function requestReset() {
+    elConfirmMask.hidden = false;
+  }
+
+  function cancelReset() {
+    elConfirmMask.hidden = true;
+  }
+
+  function doReset() {
+    elConfirmMask.hidden = true;
+    if (resetting) return;
+    resetting = true;
+
+    elOverlay.hidden = false;
+    elOverlay.style.transitionDuration = '3s';
+    void elOverlay.offsetWidth;
+    elOverlay.classList.add('is-on');
+
+    window.setTimeout(function () {
+      state = {
+        start: null,
+        end: null,
+        tz: 'local',
+        theme: state.theme,
+        themeMode: state.themeMode,
+        schedule: cloneSchedule(state.schedule || []),
+        alert: !!state.alert,
+        hideTop: !!state.hideTop,
+        hideFooter: !!state.hideFooter,
+        hideEyebrow: !!state.hideEyebrow,
+        forceEyebrow: !!state.forceEyebrow,
+        forceFooter: !!state.forceFooter,
+        lang: state.lang,
+        eyebrow: PH.eyebrow,
+        title: PH.title,
+        footer: ''
+      };
+      rangeKey = '';
+      closeSettings();
+      syncInputs();
+      renderText();
+      renderMode();
+      renderThemeUI();
+      save();
+      elOverlay.style.transitionDuration = '0.45s';
+      elOverlay.classList.remove('is-on');
+      window.setTimeout(function () {
+        elOverlay.hidden = true;
+        resetting = false;
+      }, 500);
+    }, 3000);
+  }
+
+  /* ---------- 导出 / 导入 ---------- */
+
+  function safeName(s) {
+    return String(s || '').replace(/[\\/:*?"<>|]/g, '-').replace(/^\s+|\s+$/g, '');
+  }
+
+  function openExport() {
+    var base = (state.title && state.title !== PH.title) ? state.title : 'countdown';
+    $('exportName').value = safeName(base) || 'countdown';
+    $('exportMask').hidden = false;
+    window.setTimeout(function () {
+      $('exportName').focus();
+      $('exportName').select();
+    }, 40);
+  }
+
+  function closeExport() { $('exportMask').hidden = true; }
+
+  /* 优先用系统的“另存为”对话框选位置；不支持时退回下载目录 */
+  function saveWithPicker(name, data) {
+    var p;
+    try {
+      p = window.showSaveFilePicker({
+        suggestedName: name,
+        types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]
+      });
+    } catch (e) {
+      return false;
+    }
+    if (!p || typeof p.then !== 'function') return false;
+    p.then(function (handle) {
+      return handle.createWritable().then(function (w) {
+        return w.write(data).then(function () { return w.close(); });
+      });
+    }).catch(function (err) {
+      if (err && err.name === 'AbortError') return;
+      downloadBlob(name, data);
+    });
+    return true;
+  }
+
+  function downloadBlob(name, data) {
+    var blob = new Blob([data], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+  }
+
+  function doExport() {
+    var name = safeName($('exportName').value) || 'countdown';
+    if (!/\.json$/i.test(name)) name += '.json';
+    var data = JSON.stringify(state, null, 2);
+    closeExport();
+    if (!saveWithPicker(name, data)) downloadBlob(name, data);
+  }
+
+  function applyConfig(o) {
+    if (!o || typeof o !== 'object') return false;
+    if (!('start' in o) && !('end' in o) && !('title' in o) &&
+        !('schedule' in o) && !('eyebrow' in o)) return false;
+    var s = {
+      start: null, end: null, tz: 'local', theme: 'light', themeMode: 'manual',
+      schedule: [], alert: false,
+      hideTop: true, hideFooter: true, hideEyebrow: false, forceEyebrow: false, forceFooter: false,
+      lang: (typeof o.lang === 'string' && I18N[o.lang]) ? o.lang : lang,
+      eyebrow: (typeof o.eyebrow === 'string') ? o.eyebrow : PH.eyebrow,
+      title: (typeof o.title === 'string') ? o.title : PH.title,
+      footer: (typeof o.footer === 'string') ? o.footer : ''
+    };
+    if (typeof o.start === 'string' && parseWall(o.start)) s.start = o.start;
+    if (typeof o.end === 'string' && parseWall(o.end)) s.end = o.end;
+    if (typeof o.tz === 'string' && validZone(o.tz)) s.tz = o.tz;
+    if (o.theme === 'dark' || o.theme === 'light') s.theme = o.theme;
+    if (o.themeMode === 'auto' || o.themeMode === 'manual') s.themeMode = o.themeMode;
+    if (o.alert === true) s.alert = true;
+    if (o.hideTop === false) s.hideTop = false;
+    if (o.hideFooter === false) s.hideFooter = false;
+    if (o.hideEyebrow === true) s.hideEyebrow = true;
+    if (o.forceEyebrow === true) s.forceEyebrow = true;
+    if (o.forceFooter === true) s.forceFooter = true;
+    if (Object.prototype.toString.call(o.schedule) === '[object Array]') {
+      var arr = [];
+      for (var i = 0; i < o.schedule.length; i++) {
+        var b = o.schedule[i];
+        if (b && typeof b.s === 'number' && typeof b.e === 'number' &&
+            b.s >= 0 && b.e <= 1440 && b.e - b.s >= 15) {
+          arr.push({ s: b.s, e: b.e });
+        }
+      }
+      arr.sort(function (x, y) { return x.s - y.s; });
+      s.schedule = arr;
+    }
+    if (s.schedule.length && s.themeMode === 'auto') {
+      var p = partsIn(Date.now(), resolveZone(s.tz));
+      s.theme = isDarkAt(minutesOf(p), s.schedule) ? 'dark' : 'light';
+    } else if (!s.schedule.length) {
+      s.themeMode = 'manual';
+    }
+    state = s;
+    rangeKey = '';
+    return true;
+  }
+
+  function onImportFile(ev) {
+    var f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = async function () {
+      var txt = String(reader.result);
+      var obj = null;
+      try { obj = JSON.parse(txt); } catch (e) { obj = null; }
+      ev.target.value = '';
+      if (!obj || typeof obj !== 'object' ||
+          (!('start' in obj) && !('end' in obj) && !('title' in obj) &&
+           !('schedule' in obj) && !('eyebrow' in obj))) {
+        window.alert(t('impBad'));
+        return;
+      }
+
+      if (!hasBackend()) {
+        if (!applyConfig(obj)) { window.alert(t('impBad')); return; }
+        save();
+        refreshAll();
+        return;
+      }
+
+      var base = sanitizeName(obj.title) || sanitizeName(f.name.replace(/\.json$/i, '')) || todayName();
+      try {
+        var name = await uniqueName(base, '');
+        await invoke('write_task', { name: name, content: JSON.stringify(obj, null, 2) });
+        applyConfig(obj);
+        currentTask = name;
+        savedSnapshot = JSON.stringify(state);
+        try { localStorage.setItem('tminus.last', name); } catch (e) {}
+        refreshAll();
+        await refreshTaskList();
+      } catch (e) {
+        window.alert(t('impBad'));
+      }
+    };
+    reader.readAsText(f);
+  }
+
+  /* ---------- 归零弹窗 ---------- */
+
+  function showModal() {
+    if (!elModalMask.hidden) return;
+    elModalTarget.textContent = state.end ? state.end.replace('T', ' ') : '—';
+    elModalMask.hidden = false;
+  }
+
+  function hideModal() {
+    elModalMask.hidden = true;
+  }
+
+  elModalClose.addEventListener('click', hideModal);
+  elModalMask.addEventListener('click', function (ev) {
+    if (ev.target === elModalMask) hideModal();
+  });
+
+  elGear.addEventListener('click', function () {
+    if (elSettings.hidden) openSettings(); else closeSettings();
+  });
+
+  ['input','change'].forEach(function (ev) {
+    elStartIn.addEventListener(ev, scheduleLive);
+    elEndIn.addEventListener(ev, scheduleLive);
+    elTzIn.addEventListener(ev, scheduleLive);
+    elEyebrowIn.addEventListener(ev, scheduleLive);
+    elTitleIn.addEventListener(ev, scheduleLive);
+    elFooterIn.addEventListener(ev, scheduleLive);
+  });
+
+  $('settingsClose').addEventListener('click', closeSettings);
+  $('resetBtn').addEventListener('click', requestReset);
+
+  $('exportBtn').addEventListener('click', openExport);
+  $('exportCancel').addEventListener('click', closeExport);
+  $('exportOk').addEventListener('click', doExport);
+  $('exportMask').addEventListener('click', function (ev) {
+    if (ev.target === $('exportMask')) closeExport();
+  });
+  $('importBtn').addEventListener('click', function () { $('importFile').click(); });
+  $('importFile').addEventListener('change', onImportFile);
+
+  /* ---------- 任务列表交互 ---------- */
+
+  $('newTaskBtn').addEventListener('click', async function () {
+    var n = window.prompt(t('newTask'), '');
+    if (n === null) return;
+    n = sanitizeName(n) || todayName();
+    try {
+      n = await uniqueName(n, '');
+      await createTask(n);
+    } catch (e) {}
+  });
+
+  $('openDirBtn').addEventListener('click', function () {
+    if (hasBackend()) invoke('open_tasks_dir').catch(function () {});
+  });
+
+  document.addEventListener('click', function () { $('ctxMenu').hidden = true; });
+  window.addEventListener('blur', function () { $('ctxMenu').hidden = true; });
+
+  $('ctxMenu').addEventListener('click', function (ev) { ev.stopPropagation(); });
+
+  $('ctxRename').addEventListener('click', async function () {
+    $('ctxMenu').hidden = true;
+    var old = ctxTask;
+    var n = window.prompt(t('rename'), old);
+    if (n === null) return;
+    n = sanitizeName(n);
+    if (!n || n === old) return;
+    try {
+      n = await uniqueName(n, old);
+      await invoke('rename_task', { from: old, to: n });
+      if (currentTask === old) {
+        currentTask = n;
+        try { localStorage.setItem('tminus.last', n); } catch (e) {}
+      }
+      await refreshTaskList();
+    } catch (e) {}
+  });
+
+  $('ctxDup').addEventListener('click', async function () {
+    $('ctxMenu').hidden = true;
+    try {
+      var txt = await invoke('read_task', { name: ctxTask });
+      var nn = await uniqueName(ctxTask + '-copy', '');
+      await invoke('write_task', { name: nn, content: txt });
+      await refreshTaskList();
+    } catch (e) {}
+  });
+
+  $('ctxDel').addEventListener('click', async function () {
+    $('ctxMenu').hidden = true;
+    if (!window.confirm(t('del') + ' 「' + ctxTask + '」?')) return;
+    try {
+      var wasCurrent = (ctxTask === currentTask);
+      await invoke('delete_task', { name: ctxTask });
+      var names = await invoke('list_tasks');
+      if (wasCurrent) {
+        if (names.length) {
+          await loadTask(names[0]);
+        } else {
+          await createTask(todayName());
+        }
+      } else {
+        await refreshTaskList();
+      }
+    } catch (e) {}
+  });
+
+  elConfirmOk.addEventListener('click', doReset);
+  elConfirmCancel.addEventListener('click', cancelReset);
+  elConfirmMask.addEventListener('click', function (ev) {
+    if (ev.target === elConfirmMask) cancelReset();
+  });
+
+  elThemeSeg.addEventListener('click', function (ev) {
+    var t = ev.target && ev.target.getAttribute && ev.target.getAttribute('data-theme');
+    if (t) chooseMode(t);
+  });
+
+  $('langBtn').addEventListener('click', function (ev) {
+    ev.stopPropagation();
+    var m = $('langMenu');
+    m.hidden = !m.hidden;
+    if (!m.hidden) markLangMenu();
+  });
+
+  $('langMenu').addEventListener('click', function (ev) {
+    var b = ev.target && ev.target.closest ? ev.target.closest('.lang-item') : null;
+    if (b) setLang(b.getAttribute('data-lang'));
+    ev.stopPropagation();
+  });
+
+  document.addEventListener('click', function () {
+    $('langMenu').hidden = true;
+  });
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Escape') return;
+    if (!$('langMenu').hidden) { $('langMenu').hidden = true; return; }
+    if (!$('exportMask').hidden) { closeExport(); return; }
+    if (!elConfirmMask.hidden) { cancelReset(); return; }
+    if (!elModalMask.hidden) { hideModal(); return; }
+    if (!elSettings.hidden) closeSettings();
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) tick();
+  });
+
+  /* ---------- 界面缩放 ---------- */
+
+  var SCALE_KEY = 'tminus.scale';
+  var SCALES = [0.9, 1, 1.1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3];
+
+  function buildScaleOptions() {
+    var sel = $('scaleSel');
+    sel.textContent = '';
+    for (var i = 0; i < SCALES.length; i++) {
+      var o = document.createElement('option');
+      o.value = String(SCALES[i]);
+      o.textContent = Math.round(SCALES[i] * 100) + '%';
+      sel.appendChild(o);
+    }
+  }
+
+  function applyScale(z) {
+    z = parseFloat(z);
+    if (!(z >= 0.5 && z <= 3.2)) z = 1;
+    document.documentElement.style.zoom = z;
+    document.documentElement.style.setProperty('--z', String(z));
+    try { localStorage.setItem(SCALE_KEY, String(z)); } catch (e) {}
+    $('scaleSel').value = String(z);
+    if (typeof showBars === 'function') {
+      window.setTimeout(function () { showBars(); updateNarrow(); }, 120);
+    }
+  }
+
+  function loadScale() {
+    var z = 1;
+    try { z = parseFloat(localStorage.getItem(SCALE_KEY) || '1'); } catch (e) {}
+    applyScale(isNaN(z) ? 1 : z);
+  }
+
+  buildScaleOptions();
+  $('scaleSel').addEventListener('change', function () { applyScale(this.value); });
+
+  /* ---------- 全屏 ---------- */
+
+  var FS_KEY = 'tminus.fullscreen';
+
+  function isFullscreen() { return $('fsSwitch').getAttribute('aria-checked') === 'true'; }
+
+  function setFullscreen(on) {
+    on = !!on;
+    $('fsSwitch').setAttribute('aria-checked', on ? 'true' : 'false');
+    try { localStorage.setItem(FS_KEY, on ? '1' : '0'); } catch (e) {}
+    if (hasBackend()) {
+      try { invoke('set_fullscreen', { on: on }).catch(function () {}); } catch (e) {}
+    }
+  }
+
+  function toggleFullscreen() { setFullscreen(!isFullscreen()); }
+
+  $('fsSwitch').addEventListener('click', toggleFullscreen);
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'F11') {
+      ev.preventDefault();
+      toggleFullscreen();
+    }
+  });
+
+  /* ---------- 背景随时间变红 ---------- */
+
+  $('alertSwitch').addEventListener('click', function () {
+    state.alert = !state.alert;
+    $('alertSwitch').setAttribute('aria-checked', state.alert ? 'true' : 'false');
+    lastTone = -1;
+    tone(lastT);
+    save();
+  });
+
+  /* ---------- 统一入场动效 ---------- */
+
+  function revealOnce(el, ms) {
+    if (!el) return;
+    el.classList.remove('reveal');
+    void el.offsetWidth;
+    el.classList.add('reveal');
+    window.setTimeout(function () { el.classList.remove('reveal'); }, ms || 360);
+  }
+
+  /* ---------- 导航条（横 + 竖） + 拖动平移 ---------- */
+
+  var hbar = $('hscroll'), hthumb = $('hscrollThumb');
+  var vbar = $('vscroll'), vthumb = $('vscrollThumb');
+  var barTimer = null;
+
+  function overH() {
+    var d = document.documentElement;
+    return d.scrollWidth - d.clientWidth > 2;
+  }
+  function overV() {
+    var d = document.documentElement;
+    return d.scrollHeight - d.clientHeight > 2;
+  }
+
+  function syncBars() {
+    var d = document.documentElement;
+
+    if (overH()) {
+      hbar.hidden = false;
+      var tw = hbar.clientWidth || (window.innerWidth - 28);
+      var w = Math.max(28, Math.round(tw * d.clientWidth / d.scrollWidth));
+      var ratio = d.scrollLeft / Math.max(1, d.scrollWidth - d.clientWidth);
+      hthumb.style.width = w + 'px';
+      hthumb.style.marginLeft = Math.round((tw - w) * ratio) + 'px';
+    } else {
+      hbar.hidden = true;
+    }
+
+    if (overV()) {
+      vbar.hidden = false;
+      var th = vbar.clientHeight || (window.innerHeight - 28);
+      var vh = Math.max(28, Math.round(th * d.clientHeight / d.scrollHeight));
+      var vratio = d.scrollTop / Math.max(1, d.scrollHeight - d.clientHeight);
+      vthumb.style.height = vh + 'px';
+      vthumb.style.marginTop = Math.round((th - vh) * vratio) + 'px';
+    } else {
+      vbar.hidden = true;
+    }
+
+    document.body.classList.toggle('can-pan', overH() || overV());
+  }
+
+  function showBars() {
+    syncBars();
+    if (overH()) hbar.classList.add('is-on');
+    if (overV()) vbar.classList.add('is-on');
+    if (barTimer) window.clearTimeout(barTimer);
+    barTimer = window.setTimeout(function () {
+      hbar.classList.remove('is-on');
+      vbar.classList.remove('is-on');
+      barTimer = null;
+    }, 2000);
+  }
+
+  function canPanFrom(el) {
+    while (el && el !== document.body) {
+      var tag = el.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' ||
+          tag === 'BUTTON' || tag === 'A' || tag === 'OPTION') return false;
+      if (el.classList && (el.classList.contains('tl') ||
+          el.classList.contains('hscroll') ||
+          el.classList.contains('vscroll') ||
+          el.classList.contains('ctxmenu') ||
+          el.classList.contains('langmenu'))) return false;
+      el = el.parentElement;
+    }
+    return true;
+  }
+
+  var pan = null;
+
+  document.addEventListener('mousedown', function (ev) {
+    if (ev.button !== 0) return;
+    if (!overH() && !overV()) return;
+    if (!canPanFrom(ev.target)) return;
+    pan = { x: ev.clientX, y: ev.clientY, l: window.scrollX, t: window.scrollY };
+    document.body.classList.add('panning');
+    ev.preventDefault();
+    showBars();
+  });
+
+  document.addEventListener('mousemove', function (ev) {
+    if (!pan) return;
+    window.scrollTo(pan.l - (ev.clientX - pan.x), pan.t - (ev.clientY - pan.y));
+    showBars();
+  });
+
+  document.addEventListener('mouseup', function () {
+    if (!pan) return;
+    pan = null;
+    document.body.classList.remove('panning');
+  });
+
+  document.addEventListener('wheel', function () { showBars(); }, { passive: true });
+
+  window.addEventListener('scroll', function () {
+    updateClipHide();
+    if (overH() || overV()) showBars();
+  }, { passive: true });
+
+  window.addEventListener('resize', function () {
+    updateNarrow();
+    if (overH() || overV()) showBars(); else syncBars();
+  });
+
+
+  /* ---------- 自动隐藏（无操作 3 秒） ---------- */
+
+  /* 滚动时若元素被窗口上下边缘切到（有重叠），自动隐藏该元素 */
+  function updateClipHide() {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    clipOne($('eyebrow'), state.hideEyebrow, vh);
+    clipOne(document.querySelector('.topright'), state.hideTop, vh);
+    clipOne($('footer'), state.hideFooter, vh);
+  }
+
+  function clipOne(el, on, vh) {
+    if (!el) return;
+    if (!on) { el.classList.remove('is-clipped'); return; }
+    var r = el.getBoundingClientRect();
+    var clipped = (r.top < -1) || (r.bottom > vh + 1);
+    el.classList.toggle('is-clipped', clipped);
+  }
+
+  function applyAutoHide() {
+    var eb = $('eyebrow');
+    var ft = $('footer');
+    if (eb) eb.classList.toggle('is-forced', !!state.forceEyebrow);
+    if (ft) ft.classList.toggle('is-forced', !!state.forceFooter);
+    updateClipHide();
+  }
+
+  window.addEventListener('scroll', updateClipHide, { passive: true });
+  window.addEventListener('resize', updateClipHide);
+
+
+
+  $('hideTopSwitch').addEventListener('click', function () {
+    state.hideTop = !state.hideTop;
+    this.setAttribute('aria-checked', state.hideTop ? 'true' : 'false');
+    applyAutoHide();
+    save();
+  });
+
+  $('hideFooterSwitch').addEventListener('click', function () {
+    state.hideFooter = !state.hideFooter;
+    this.setAttribute('aria-checked', state.hideFooter ? 'true' : 'false');
+    applyAutoHide();
+    save();
+  });
+
+  $('hideEyebrowSwitch').addEventListener('click', function () {
+    state.hideEyebrow = !state.hideEyebrow;
+    this.setAttribute('aria-checked', state.hideEyebrow ? 'true' : 'false');
+    applyAutoHide();
+    save();
+  });
+
+  $('forceEyebrowSwitch').addEventListener('click', function () {
+    state.forceEyebrow = !state.forceEyebrow;
+    this.setAttribute('aria-checked', state.forceEyebrow ? 'true' : 'false');
+    applyAutoHide();
+    save();
+  });
+
+  $('forceFooterSwitch').addEventListener('click', function () {
+    state.forceFooter = !state.forceFooter;
+    this.setAttribute('aria-checked', state.forceFooter ? 'true' : 'false');
+    applyAutoHide();
+    save();
+  });
+
+  /* ---------- 分段折叠 / 单段恢复 / 窄屏单列 ---------- */
+
+  function updateNarrow() {
+    var g = document.querySelector('.settings-grid');
+    if (!g) return;
+    if (elSettings.hidden) { g.classList.remove('narrow'); return; }
+    g.classList.toggle('narrow', elSettings.clientWidth < 520);
+  }
+
+  qa('.sect-title').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var sect = btn.closest ? btn.closest('.sect') : null;
+      if (!sect) return;
+      var closed = sect.classList.toggle('is-closed');
+      btn.setAttribute('aria-expanded', closed ? 'false' : 'true');
+      if (!closed && editingAuto) {
+        renderThemeUI();
+        renderTimeline();
+      }
+      updateClipHide();
+    });
+  });
+
+  qa('.sect-reset').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var kind = btn.getAttribute('data-reset');
+      if (kind === 'look') {
+        state.theme = 'light';
+        state.themeMode = 'manual';
+        state.schedule = [];
+        state.alert = false;
+        state.hideTop = true;
+        state.hideFooter = true;
+        state.hideEyebrow = false;
+        state.forceEyebrow = false;
+        state.forceFooter = false;
+        lastDark = null;
+      } else if (kind === 'time') {
+        state.start = null;
+        state.end = null;
+        state.tz = 'local';
+      } else {
+        state.eyebrow = PH.eyebrow;
+        state.title = PH.title;
+        state.footer = '';
+      }
+      rangeKey = '';
+      syncInputs();
+      applyLang();
+      applyTheme();
+      renderThemeUI();
+      renderText();
+      renderMode();
+      tick();
+      save();
+    });
+  });
+
+  /* ---------- 启动 ---------- */
+
+  buildLangMenu();
+  applyLang();
+  loadScale();
+
+  if (hasBackend()) {
+    $('tasklist').hidden = false;
+    savedSnapshot = JSON.stringify(state);
+    bootTasks().catch(function () {});
+  } else {
+    load();
+    applyLang();
+  }
+
+  try {
+    if (localStorage.getItem(FS_KEY) === '1') setFullscreen(true);
+  } catch (e) {}
+
+  if (state.schedule.length && state.themeMode === 'auto') {
+    var p0 = partsIn(Date.now(), tzId());
+    state.theme = isDarkAt(minutesOf(p0)) ? 'dark' : 'light';
+  } else {
+    state.themeMode = 'manual';
+  }
+
+  applyTheme();
+  renderThemeUI();
+  syncInputs();
+  renderText();
+  renderMode();
+  tick();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "t-minus",
+  "private": true,
+  "version": "0.1.1",
+  "description": "T-Minus",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}
