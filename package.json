@@ -1,7 +1,7 @@
 {
   "name": "t-minus",
   "private": true,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "T-Minus",
   "scripts": {
     "dev": "tauri dev",
