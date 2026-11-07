@@ -2912,31 +2912,26 @@
     var el = elSettings;
     if (settingsTimer) { window.clearTimeout(settingsTimer); settingsTimer = null; }
 
-    var h = el.scrollHeight;
-    el.style.transition = 'none';
-    el.style.height = h + 'px';
-    el.style.opacity = '1';
-    void el.offsetHeight;
-    el.style.transition = 'height .22s ease, opacity .18s ease';
-    el.style.height = '0px';
-    el.style.opacity = '0';
-
     editingAuto = false;
     drag = null;
+
+    /* 收起只做一次 0.14s 淡出，不做高度动画 */
+    el.style.transition = 'opacity .14s linear';
+    el.style.opacity = '0';
 
     settingsTimer = window.setTimeout(function () {
       el.hidden = true;
       el.style.transition = '';
-      el.style.height = '';
       el.style.opacity = '';
       elGear.hidden = false;
       elResetLink.hidden = false;
       settingsTimer = null;
-      updateNarrow();
-      syncBars();
-    }, 240);
+      window.requestAnimationFrame(function () {
+        updateNarrow();
+        syncBars();
+      });
+    }, 150);
   }
-
   /* 改动即保存：输入合法就落盘，非法值先不写 */
   var liveTimer = null;
 
