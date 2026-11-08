@@ -32,6 +32,15 @@ ManifestDPIAwareness PerMonitorV2
 ${StrCase}
 ${StrLoc}
 
+; T-Minus: 卸载页的文案（默认是「删除应用数据」，容易被误解成缓存）
+LangString tmDeleteLabel ${LANG_ENGLISH} "Also delete all task files you created"
+LangString tmDeleteLabel ${LANG_SIMPLIFIEDCHINESE} "同时删除您创建的所有任务文件"
+
+LangString tmConfirmAsk1 ${LANG_ENGLISH} "Delete all your task files? This cannot be undone.$\r$\n$\r$\n"
+LangString tmConfirmAsk1 ${LANG_SIMPLIFIEDCHINESE} "确定要删除您所有的任务文件吗？此操作不可逆。$\r$\n$\r$\n将删除 "
+LangString tmConfirmAsk2 ${LANG_ENGLISH} " task files will be deleted."
+LangString tmConfirmAsk2 ${LANG_SIMPLIFIEDCHINESE} " 个任务文件。"
+
 {{#if installer_hooks}}
 !include "{{installer_hooks}}"
 {{/if}}
@@ -455,7 +464,7 @@ Function un.ConfirmShow ; Add add a `Delete app data` check box
   IntOp $5 $5 / 96
   IntOp $6 $6 / 96
   IntOp $7 $7 / 96
-  System::Call 'user32::CreateWindowEx(i r3, w "${__NSD_CheckBox_CLASS}", w "$(deleteAppData)", i ${__NSD_CheckBox_STYLE}, i r4, i r5, i r6, i r7, p r1, i0, i0, i0) i .s'
+  System::Call 'user32::CreateWindowEx(i r3, w "${__NSD_CheckBox_CLASS}", w "$(tmDeleteLabel)", i ${__NSD_CheckBox_STYLE}, i r4, i r5, i r6, i r7, p r1, i0, i0, i0) i .s'
   Pop $DeleteAppDataCheckbox
   SendMessage $HWNDPARENT ${WM_GETFONT} 0 0 $1
   SendMessage $DeleteAppDataCheckbox ${WM_SETFONT} $1 1
@@ -463,6 +472,24 @@ FunctionEnd
 !define MUI_PAGE_CUSTOMFUNCTION_LEAVE un.ConfirmLeave
 Function un.ConfirmLeave
   SendMessage $DeleteAppDataCheckbox ${BM_GETCHECK} 0 0 $DeleteAppDataCheckboxState
+
+  ; T-Minus: 勾选了删除任务文件时，先数一下并二次确认
+  ${If} $DeleteAppDataCheckboxState = 1
+    StrCpy $R0 0
+    FindFirst $R1 $R2 "$INSTDIR\tasks\*.json"
+    loop_count:
+      StrCmp $R2 "" done_count
+      IntOp $R0 $R0 + 1
+      FindNext $R1 $R2
+      Goto loop_count
+    done_count:
+    FindClose $R1
+
+    ${If} $R0 > 0
+      MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(tmConfirmAsk1)$R0$(tmConfirmAsk2)" /SD IDYES IDYES +2
+      Abort
+    ${EndIf}
+  ${EndIf}
 FunctionEnd
 !define MUI_PAGE_CUSTOMFUNCTION_PRE un.SkipIfPassive
 !insertmacro MUI_UNPAGE_CONFIRM
