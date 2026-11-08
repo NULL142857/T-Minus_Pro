@@ -5,7 +5,7 @@
   "description": "T-Minus",
   "scripts": {
     "dev": "tauri dev",
-    "build": "tauri build"
+    "build": "node scripts/patch-nsis.mjs && tauri build"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2"
