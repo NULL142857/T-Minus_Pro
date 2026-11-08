@@ -1,6 +1,6 @@
 [package]
 name = "t-minus"
-version = "0.1.5"
+version = "0.1.6"
 description = "T-Minus"
 authors = ["FurySpace21"]
 edition = "2021"
