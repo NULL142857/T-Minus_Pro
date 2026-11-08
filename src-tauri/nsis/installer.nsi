@@ -32,41 +32,6 @@ ManifestDPIAwareness PerMonitorV2
 ${StrCase}
 ${StrLoc}
 
-; T-Minus: 卸载页的文案（默认是「删除应用数据」，容易被误解成缓存）
-LangString tmDeleteLabel ${LANG_ENGLISH} "Also delete all task files you created"
-LangString tmDeleteLabel ${LANG_FRENCH} "Supprimer aussi tous les fichiers de tâches que vous avez créés"
-LangString tmDeleteLabel ${LANG_SIMPLIFIEDCHINESE} "同时删除您创建的所有任务文件"
-LangString tmDeleteLabel ${LANG_TRADCHINESE} "同時刪除您建立的所有任務檔案"
-LangString tmDeleteLabel ${LANG_JAPANESE} "作成したすべてのタスクファイルも削除する"
-LangString tmDeleteLabel ${LANG_KOREAN} "내가 만든 모든 작업 파일도 삭제"
-LangString tmDeleteLabel ${LANG_RUSSIAN} "Также удалить все созданные вами файлы задач"
-LangString tmDeleteLabel ${LANG_SPANISH} "Eliminar también todos los archivos de tareas que has creado"
-LangString tmDeleteLabel ${LANG_ARABIC} "حذف جميع ملفات المهام التي أنشأتها أيضًا"
-LangString tmDeleteLabel ${LANG_HINDI} "आपके बनाए सभी टास्क फ़ाइलें भी हटाएँ"
-LangString tmDeleteLabel ${LANG_INDONESIAN} "Hapus juga semua file tugas yang Anda buat"
-
-LangString tmConfirmAsk1 ${LANG_ENGLISH} "Delete all your task files? This cannot be undone.$\r$\n$\r$\n"
-LangString tmConfirmAsk1 ${LANG_FRENCH} "Supprimer tous vos fichiers de tâches ? Cette action est irréversible.$\r$\n$\r$\n"
-LangString tmConfirmAsk1 ${LANG_SIMPLIFIEDCHINESE} "确定要删除您所有的任务文件吗？此操作不可逆。$\r$\n$\r$\n将删除 "
-LangString tmConfirmAsk1 ${LANG_TRADCHINESE} "確定要刪除您所有的任務檔案嗎？此操作不可逆。$\r$\n$\r$\n將刪除 "
-LangString tmConfirmAsk1 ${LANG_JAPANESE} "すべてのタスクファイルを削除しますか？この操作は元に戻せません。$\r$\n$\r$\n削除するファイル数："
-LangString tmConfirmAsk1 ${LANG_KOREAN} "모든 작업 파일을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.$\r$\n$\r$\n"
-LangString tmConfirmAsk1 ${LANG_RUSSIAN} "Удалить все ваши файлы задач? Это необратимо.$\r$\n$\r$\n"
-LangString tmConfirmAsk1 ${LANG_SPANISH} "¿Eliminar todos tus archivos de tareas? Esta acción no se puede deshacer.$\r$\n$\r$\n"
-LangString tmConfirmAsk1 ${LANG_ARABIC} "هل تريد حذف جميع ملفات المهام؟ لا يمكن التراجع عن هذا الإجراء.$\r$\n$\r$\n"
-LangString tmConfirmAsk1 ${LANG_HINDI} "क्या आप अपनी सभी टास्क फ़ाइलें हटाना चाहते हैं? इसे वापस नहीं लाया जा सकता।$\r$\n$\r$\n"
-LangString tmConfirmAsk1 ${LANG_INDONESIAN} "Hapus semua file tugas Anda? Tindakan ini tidak dapat dibatalkan.$\r$\n$\r$\n"
-LangString tmConfirmAsk2 ${LANG_ENGLISH} " task files will be deleted."
-LangString tmConfirmAsk2 ${LANG_FRENCH} " fichiers de tâches seront supprimés."
-LangString tmConfirmAsk2 ${LANG_SIMPLIFIEDCHINESE} " 个任务文件。"
-LangString tmConfirmAsk2 ${LANG_TRADCHINESE} " 個任務檔案。"
-LangString tmConfirmAsk2 ${LANG_JAPANESE} " 個"
-LangString tmConfirmAsk2 ${LANG_KOREAN} " 개의 작업 파일이 삭제됩니다."
-LangString tmConfirmAsk2 ${LANG_RUSSIAN} " файлов задач будет удалено."
-LangString tmConfirmAsk2 ${LANG_SPANISH} " archivos de tareas se eliminarán."
-LangString tmConfirmAsk2 ${LANG_ARABIC} " ملفات مهام ستُحذف."
-LangString tmConfirmAsk2 ${LANG_HINDI} " टास्क फ़ाइलें हटाई जाएँगी।"
-LangString tmConfirmAsk2 ${LANG_INDONESIAN} " file tugas akan dihapus."
 
 {{#if installer_hooks}}
 !include "{{installer_hooks}}"
@@ -465,9 +430,13 @@ FunctionEnd
 ; 1. Confirm uninstall page
 Var DeleteAppDataCheckbox
 Var DeleteAppDataCheckboxState
+Var TMLabel   ; T-Minus
+Var TMAsk1    ; T-Minus
+Var TMAsk2    ; T-Minus
 !define /ifndef WS_EX_LAYOUTRTL         0x00400000
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW un.ConfirmShow
 Function un.ConfirmShow ; Add add a `Delete app data` check box
+  Call un.PickTaskFileText
   ; $1 inner dialog HWND
   ; $2 window DPI
   ; $3 style
@@ -491,13 +460,14 @@ Function un.ConfirmShow ; Add add a `Delete app data` check box
   IntOp $5 $5 / 96
   IntOp $6 $6 / 96
   IntOp $7 $7 / 96
-  System::Call 'user32::CreateWindowEx(i r3, w "${__NSD_CheckBox_CLASS}", w "$(tmDeleteLabel)", i ${__NSD_CheckBox_STYLE}, i r4, i r5, i r6, i r7, p r1, i0, i0, i0) i .s'
+  System::Call 'user32::CreateWindowEx(i r3, w "${__NSD_CheckBox_CLASS}", w "$TMLabel", i ${__NSD_CheckBox_STYLE}, i r4, i r5, i r6, i r7, p r1, i0, i0, i0) i .s'
   Pop $DeleteAppDataCheckbox
   SendMessage $HWNDPARENT ${WM_GETFONT} 0 0 $1
   SendMessage $DeleteAppDataCheckbox ${WM_SETFONT} $1 1
 FunctionEnd
 !define MUI_PAGE_CUSTOMFUNCTION_LEAVE un.ConfirmLeave
 Function un.ConfirmLeave
+  Call un.PickTaskFileText
   SendMessage $DeleteAppDataCheckbox ${BM_GETCHECK} 0 0 $DeleteAppDataCheckboxState
 
   ; T-Minus: 勾选了删除任务文件时，先数一下并二次确认
@@ -513,7 +483,7 @@ Function un.ConfirmLeave
     FindClose $R1
 
     ${If} $R0 > 0
-      MessageBox MB_YESNO|MB_ICONEXCLAMATION "$(tmConfirmAsk1)$R0$(tmConfirmAsk2)" /SD IDYES IDYES +2
+      MessageBox MB_YESNO|MB_ICONEXCLAMATION "$TMAsk1$R0$TMAsk2" /SD IDYES IDYES +2
       Abort
     ${EndIf}
   ${EndIf}
@@ -535,10 +505,80 @@ FunctionEnd
 !insertmacro MUI_LANGUAGE "{{this}}"
 LangString choowHowToInstall 0 ""
 {{/each}}
+
 !insertmacro MUI_RESERVEFILE_LANGDLL
 {{#each language_files}}
   !include "{{this}}"
 {{/each}}
+
+; T-Minus: 卸载页文案（$() LangString 在此模板里解析成空，改用 $LANGUAGE 数值判断）
+Function un.PickTaskFileText
+  StrCpy $TMLabel "Also delete all task files you created"
+  StrCpy $TMAsk1 "Delete all your task files? This cannot be undone.$\r$\n$\r$\n"
+  StrCpy $TMAsk2 " task files will be deleted."
+  IntCmp $LANGUAGE 2052 tm_zh_cn
+  IntCmp $LANGUAGE 1028 tm_zh_tw
+  IntCmp $LANGUAGE 1036 tm_fr
+  IntCmp $LANGUAGE 1041 tm_ja
+  IntCmp $LANGUAGE 1042 tm_ko
+  IntCmp $LANGUAGE 1049 tm_ru
+  IntCmp $LANGUAGE 3082 tm_es
+  IntCmp $LANGUAGE 1025 tm_ar
+  IntCmp $LANGUAGE 1081 tm_hi
+  IntCmp $LANGUAGE 1057 tm_id
+  Goto tm_done
+tm_zh_cn:
+  StrCpy $TMLabel "同时删除您创建的所有任务文件"
+  StrCpy $TMAsk1 "确定要删除您所有的任务文件吗？此操作不可逆。$\r$\n$\r$\n将删除 "
+  StrCpy $TMAsk2 " 个任务文件。"
+  Goto tm_done
+tm_zh_tw:
+  StrCpy $TMLabel "同時刪除您建立的所有任務檔案"
+  StrCpy $TMAsk1 "確定要刪除您所有的任務檔案嗎？此操作不可逆。$\r$\n$\r$\n將刪除 "
+  StrCpy $TMAsk2 " 個任務檔案。"
+  Goto tm_done
+tm_fr:
+  StrCpy $TMLabel "Supprimer aussi tous les fichiers de tâches que vous avez créés"
+  StrCpy $TMAsk1 "Supprimer tous vos fichiers de tâches ? Cette action est irréversible.$\r$\n$\r$\n"
+  StrCpy $TMAsk2 " fichiers de tâches seront supprimés."
+  Goto tm_done
+tm_ja:
+  StrCpy $TMLabel "作成したすべてのタスクファイルも削除する"
+  StrCpy $TMAsk1 "すべてのタスクファイルを削除しますか？この操作は元に戻せません。$\r$\n$\r$\n削除するファイル数："
+  StrCpy $TMAsk2 " 個"
+  Goto tm_done
+tm_ko:
+  StrCpy $TMLabel "내가 만든 모든 작업 파일도 삭제"
+  StrCpy $TMAsk1 "모든 작업 파일을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.$\r$\n$\r$\n"
+  StrCpy $TMAsk2 " 개의 작업 파일이 삭제됩니다."
+  Goto tm_done
+tm_ru:
+  StrCpy $TMLabel "Также удалить все созданные вами файлы задач"
+  StrCpy $TMAsk1 "Удалить все ваши файлы задач? Это необратимо.$\r$\n$\r$\n"
+  StrCpy $TMAsk2 " файлов задач будет удалено."
+  Goto tm_done
+tm_es:
+  StrCpy $TMLabel "Eliminar también todos los archivos de tareas que has creado"
+  StrCpy $TMAsk1 "¿Eliminar todos tus archivos de tareas? Esta acción no se puede deshacer.$\r$\n$\r$\n"
+  StrCpy $TMAsk2 " archivos de tareas se eliminarán."
+  Goto tm_done
+tm_ar:
+  StrCpy $TMLabel "حذف جميع ملفات المهام التي أنشأتها أيضًا"
+  StrCpy $TMAsk1 "هل تريد حذف جميع ملفات المهام؟ لا يمكن التراجع عن هذا الإجراء.$\r$\n$\r$\n"
+  StrCpy $TMAsk2 " ملفات مهام ستُحذف."
+  Goto tm_done
+tm_hi:
+  StrCpy $TMLabel "आपके बनाए सभी टास्क फ़ाइलें भी हटाएँ"
+  StrCpy $TMAsk1 "क्या आप अपनी सभी टास्क फ़ाइलें हटाना चाहते हैं? इसे वापस नहीं लाया जा सकता।$\r$\n$\r$\n"
+  StrCpy $TMAsk2 " टास्क फ़ाइलें हटाई जाएँगी।"
+  Goto tm_done
+tm_id:
+  StrCpy $TMLabel "Hapus juga semua file tugas yang Anda buat"
+  StrCpy $TMAsk1 "Hapus semua file tugas Anda? Tindakan ini tidak dapat dibatalkan.$\r$\n$\r$\n"
+  StrCpy $TMAsk2 " file tugas akan dihapus."
+  Goto tm_done
+tm_done:
+FunctionEnd
 
 Function .onInit
   ${GetOptions} $CMDLINE "/P" $PassiveMode
