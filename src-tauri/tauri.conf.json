@@ -4,7 +4,8 @@
   "version": "0.1.7",
   "identifier": "com.furyspace21.tminus",
   "build": {
-    "frontendDist": "../src"
+    "frontendDist": "../src",
+    "beforeBundleCommand": "node scripts/patch-nsis.mjs"
   },
   "app": {
     "windows": [
